@@ -810,4 +810,16 @@ textarea {
     .member p {
         font-size: 0.77rem;
     }
+    /* style.css */
+.slide {
+  display: none;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.5s ease;
+}
+
+.slide.fade {
+  display: block;
+  opacity: 1;
+}
 } 
