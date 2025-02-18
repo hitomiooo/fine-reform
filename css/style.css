@@ -168,28 +168,29 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 2列に分割 */
     gap: 20px;
-    max-width: 1200px;
+    max-width: 100%; /* 1200pxの制限を解除 */
     margin: 60px auto 0;
-    padding: 0 20px;
+    padding: 0;
 }
 
 /* 固定画像のスタイル */
 .hero-fixed {
     width: 100%;
-    height: auto;
+    height: calc(100vh - 60px); /* ビューポートの高さからヘッダーの高さを引く */
+    overflow: hidden;
 }
 
 .hero-fixed img {
     width: 100%;
-    height: auto;
-    max-height: 80vh;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 /* スライドショーのスタイル */
 .slideshow {
     width: 100%;
-    height: auto;
+    height: calc(100vh - 60px); /* 固定画像と同じ高さに */
     position: relative;
     overflow: hidden;
 }
@@ -197,6 +198,7 @@ main {
 .slide {
     display: none;
     width: 100%;
+    height: 100%;
 }
 
 .slide.active {
@@ -205,9 +207,9 @@ main {
 
 .slide img {
     width: 100%;
-    height: auto;
-    max-height: 80vh;
+    height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 /* フェードアニメーション */
@@ -267,12 +269,13 @@ main {
     .hero {
         grid-template-columns: 1fr; /* 1列に変更 */
         margin-top: 120px;
-        padding: 0 10px;
     }
 
+    .hero-fixed,
+    .slideshow,
     .hero-fixed img,
     .slide img {
-        max-height: 50vh;
+        height: 50vh; /* スマートフォンでは画面の半分の高さに */
     }
 
     .hero h1 {
@@ -831,4 +834,4 @@ textarea {
         margin-bottom: 0.5rem;
         margin-right: 0; /* スマートフォン用に右側のスペースをリセット */
     }
-} 
+}
