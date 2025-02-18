@@ -819,3 +819,8 @@ textarea {
         margin-bottom: 0.5rem;
     }
 }
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem; /* 右側にスペースを追加 */
+}
