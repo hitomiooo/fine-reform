@@ -836,3 +836,11 @@ textarea {
     object-fit: cover;
     object-position: center;
 }
+.hero-fixed img, 
+.slide img {
+    width: 100%;
+    height: auto; /* 高さを自動にして、幅に合わせる */
+    max-height: 100vh; /* 最大高さをビューポートの高さに制限 */
+    object-fit: cover;
+    object-position: center;
+}
