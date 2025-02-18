@@ -643,10 +643,7 @@ footer {
 .radio-group label {
     display: inline-flex;
     align-items: center;
-    font-weight: normal;
-    white-space: nowrap;
-    height: 20px;
-    line-height: 20px;
+    margin-right: 1rem; /* 右側にスペースを追加 */
 }
 
 .radio-group input[type="radio"] {
@@ -811,27 +808,7 @@ textarea {
         font-size: 0.77rem;
     }
 }
-@media screen and (max-width: 480px) {
-    .radio-group {
-        flex-direction: column;
-    }
-    .radio-group label {
-        margin-bottom: 0.5rem;
-    }
-}
-.radio-group label {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 1rem; /* 右側にスペースを追加 */
-}
-/* 既存の.radio-groupスタイルを修正 */
-.radio-group label {
-    display: inline-flex;
-    align-items: center;
-    margin-right: 1rem; /* 右側にスペースを追加 */
-}
 
-/* スマートフォン用のスタイルを調整 */
 @media screen and (max-width: 480px) {
     .radio-group {
         flex-direction: column;
