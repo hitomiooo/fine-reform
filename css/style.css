@@ -1,0 +1,834 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* 横スクロールを防止 */
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #00d1f6;  /* 明るい水色 */
+    color: #333333;  /* 濃いグレー */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 60px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    width: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    margin-left: 40px;
+    background: transparent;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding-right: 40px;
+}
+
+nav ul li {
+    margin-left: 2.5rem;
+}
+
+nav ul li a {
+    color: #003399;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    header {
+        position: fixed;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        height: auto;
+        min-height: 60px;
+    }
+
+    nav {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .logo-image {
+        height: 40px;
+        margin: 0;
+    }
+
+    nav ul {
+        width: 100%;
+        padding: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0.3rem 0.5rem;
+    }
+
+    nav ul li a {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .hero {
+        margin-top: 50px;
+    }
+
+    .hero-content {
+        padding: 1rem 0;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 2rem;
+        font-size: 0.9rem;
+    }
+
+    .plumber-illustration {
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-image {
+        height: calc(100vh - 60px);
+    }
+}
+
+/* さらに小さい画面用の調整 */
+@media (max-width: 480px) {
+    .logo-image {
+        height: 30px;
+    }
+
+    nav ul li {
+        margin: 0.2rem 0.3rem;
+    }
+
+    nav ul li a {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    padding-top: 60px; /* ヘッダーの高さ分だけ確保 */
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2列に分割 */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 60px auto 0;
+    padding: 0 20px;
+}
+
+/* 固定画像のスタイル */
+.hero-fixed {
+    width: 100%;
+    height: auto;
+}
+
+.hero-fixed img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+/* スライドショーのスタイル */
+.slideshow {
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+/* フェードアニメーション */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: 0.4}
+    to {opacity: 1}
+}
+
+.plumber-illustration {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.hero-content {
+    width: 100%;
+    background-color: #808080;
+    padding: 1.5rem 0;
+    text-align: center;
+    position: relative;
+    margin-top: -4px;
+}
+
+.hero h1 {
+    color: #ffffff;
+    font-size: 3rem;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background-color: #ffffff;
+    color: #003399;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-bottom: 0.5rem;
+}
+
+.cta-button:hover {
+    background-color: #e6f3ff;
+    color: #003399;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr; /* 1列に変更 */
+        margin-top: 120px;
+        padding: 0 10px;
+    }
+
+    .hero-fixed img,
+    .slide img {
+        max-height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .plumber-illustration {
+        width: 100%;
+        height: auto;
+    }
+
+    .cta-button {
+        padding: 0.8rem 2rem;
+    }
+}
+
+.news ul {
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.news li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.company-info,
+main section {    /* すべてのメインコンテンツセクション */
+    background-color: white;    /* コンテンツ部分は白背景に */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.company-info table {
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.company-info th,
+.company-info td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+}
+
+.company-info p,
+.company-info td {
+    color: #333333;  /* 濃いグレー */
+}
+
+.member {
+    margin: 2rem 0;
+}
+
+.job-posting {
+    margin: 2rem 0;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+/* 代表挨拶のスタイル */
+.ceo-message {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.ceo-message h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #333;
+}
+
+.message-content {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.ceo-image {
+    flex: 0 0 300px;
+    text-align: center;
+}
+
+.ceo-image img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.message-text {
+    flex: 1;
+}
+
+.message-text p {
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.ceo-signature {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+.ceo-name {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .message-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ceo-image {
+        margin-bottom: 2rem;
+    }
+}
+
+/* カーソル共有のスタイル */
+.shared-cursor {
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1000;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.editor-name {
+    position: absolute;
+    font-size: 12px;
+    background: inherit;
+    padding: 2px 4px;
+    border-radius: 3px;
+    white-space: nowrap;
+    transform: translateY(-100%);
+}
+
+[contenteditable="true"] {
+    position: relative;
+    outline: 1px dashed #ccc;
+    padding: 5px;
+    min-height: 1em;
+}
+
+[contenteditable="true"]:focus {
+    outline: 2px solid #007bff;
+}
+
+.recruit-container {
+    display: flex;
+    margin: 20px;
+}
+
+.recruit-tabs {
+    width: 200px;
+    background: #f5f5f5;
+    padding: 20px 0;
+}
+
+.recruit-tabs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.recruit-tabs li {
+    padding: 10px 20px;
+    border-left: 4px solid transparent;
+}
+
+.recruit-tabs li:hover {
+    background: #e0e0e0;
+    border-left-color: #666;
+}
+
+.recruit-tabs a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+.recruit-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* タブの切り替えのためのJavaScript用スタイル */
+.tab-content:target {
+    display: block;
+}
+
+.recruit-message {
+    background: #f5f5f5;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+}
+
+.recruit-message p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+}
+
+.salary-table {
+    margin: 2rem 0;
+}
+
+.salary-row {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+.salary-row h4 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.contact-info a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.footer-nav {
+    background: #f8f9fa;
+    padding: 2rem 0;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style: none;
+}
+
+.footer-nav a {
+    color: #333;
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    color: #007bff;
+}
+
+.copyright {
+    text-align: center;
+    padding: 1rem 0;
+    background: #333;
+    color: #fff;
+}
+
+.company-info-table ul {
+    list-style: disc;  /* 黒丸のリストマーカーを設定 */
+    padding-left: 1.5em;  /* 左の余白を追加 */
+    margin: 0;
+}
+
+.company-info-table ul li {
+    margin-bottom: 0.5rem;
+}
+
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.contact-intro {
+    margin-bottom: 2rem;
+}
+
+.required-notice {
+    color: #ff4444;
+    margin: 1rem 0;
+}
+
+.contact-form {
+    background: #f5f5f5;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.required {
+    color: #ff4444;
+    margin-left: 0.3rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+.radio-group label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 1rem; /* 右側にスペースを追加 */
+}
+
+.radio-group input[type="radio"] {
+    margin: 0 0.5rem 0 0;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+}
+
+textarea {
+    min-height: 150px;
+}
+
+.form-button {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.form-button button {
+    background: #007bff;
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.form-button button:hover {
+    background: #0056b3;
+}
+
+.form-group input[type="text"]::placeholder {
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* 郵便番号入力欄のスタイル */
+#postal {
+    width: 200px;  /* 郵便番号用に幅を調整 */
+}
+
+.address-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.address-group select {
+    width: 200px;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.address-group select:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* セレクトボックスの矢印をカスタマイズ */
+.address-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+/* 採用ページのナビゲーション用スタイル */
+.recruit-nav li a {
+    color: #000000; /* 黒色に変更 */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 8px 0;
+}
+
+.recruit-nav li a:hover {
+    color: #333333; /* ホバー時の色も暗めに調整 */
+}
+
+/* 既存のナビゲーションリンクも黒に変更 */
+.recruit-content ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.recruit-content ul li a:hover {
+    color: #333333;
+}
+
+.workmate {
+    max-width: 900px; /* 元の幅を維持 */
+    margin: 0 auto;
+    padding: 13px;
+}
+
+.workmate h1 {
+    text-align: center;
+    margin-bottom: 27px;
+    font-size: 1.62rem; /* 10%縮小 */
+}
+
+.member-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px; /* 元の間隔を維持 */
+}
+
+.member {
+    width: calc(50% - 15px); /* 元の横幅比率を維持 */
+    margin-bottom: 27px;
+    text-align: center;
+    padding: 13px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.member img {
+    width: 100%;
+    max-width: 225px; /* 10%縮小 */
+    height: auto;
+    margin-bottom: 13px;
+}
+
+.member h3 {
+    margin: 7px 0;
+    color: #000;
+    font-size: 1.08rem; /* 10%縮小 */
+}
+
+.member p {
+    margin: 3px 0;
+    line-height: 1.3;
+    font-size: 0.81rem; /* 10%縮小 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .member {
+        width: 100%;
+    }
+    
+    .workmate h1 {
+        font-size: 1.35rem;
+    }
+    
+    .member h3 {
+        font-size: 0.99rem;
+    }
+    
+    .member p {
+        font-size: 0.77rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .radio-group {
+        flex-direction: column;
+    }
+    .radio-group label {
+        margin-bottom: 0.5rem;
+        margin-right: 0; /* スマートフォン用に右側のスペースをリセット */
+    }
+} 
