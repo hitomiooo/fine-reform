@@ -166,24 +166,24 @@ main {
     width: 100vw;
     margin: 0;
     overflow: hidden;
-    height: 100vh;
+    height: calc(100vh - 60px);  /* 変更: 戻す */
     display: flex;
     justify-content: center;
     align-items: center;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 60px;
+    margin-top: 60px;  /* 変更: padding-topをmargin-topに変更 */
 }
 
 /* 固定画像とスライドショーの共通設定 */
 .hero-fixed,
 .slideshow {
     position: absolute;
-    top: 60px;
+    top: 0;  /* 変更: 60pxから0に戻す */
     left: 0;
     transform: none;
     width: 100%;
-    height: calc(100% - 60px);
+    height: 100%;  /* 変更: 100%に戻す */
 }
 
 /* 画像の基本設定 */
@@ -192,7 +192,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;  /* 変更: 明示的に中央配置を指定 */
 }
 
 /* スライドの設定 */
