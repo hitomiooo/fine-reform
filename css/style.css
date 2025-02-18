@@ -163,34 +163,30 @@ main {
 
 .hero {
     position: relative;
-    width: 100%;
-    margin-top: 60px;
+    width: 100vw; /* ビューポート幅いっぱいに */
+    margin: 60px 0 0 0; /* 上部のマージンのみ設定 */
     display: grid;
-    grid-template-columns: 1fr 1fr; /* 2列に分割 */
-    gap: 20px;
-    max-width: 100%; /* 1200pxの制限を解除 */
-    margin: 60px auto 0;
+    grid-template-columns: 50vw 50vw; /* ビューポート幅の半分ずつ */
+    gap: 0;
     padding: 0;
 }
 
 /* 固定画像のスタイル */
 .hero-fixed {
-    width: 100%;
-    height: calc(100vh - 60px); /* ビューポートの高さからヘッダーの高さを引く */
-    overflow: hidden;
+    width: 50vw;
+    height: 90vh; /* ビューポートの90%の高さ */
 }
 
 .hero-fixed img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 /* スライドショーのスタイル */
 .slideshow {
-    width: 100%;
-    height: calc(100vh - 60px); /* 固定画像と同じ高さに */
+    width: 50vw;
+    height: 90vh; /* 固定画像と同じ高さ */
     position: relative;
     overflow: hidden;
 }
@@ -209,7 +205,6 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
 }
 
 /* フェードアニメーション */
@@ -267,15 +262,14 @@ main {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .hero {
-        grid-template-columns: 1fr; /* 1列に変更 */
+        grid-template-columns: 1fr;
         margin-top: 120px;
     }
 
     .hero-fixed,
-    .slideshow,
-    .hero-fixed img,
-    .slide img {
-        height: 50vh; /* スマートフォンでは画面の半分の高さに */
+    .slideshow {
+        width: 100vw;
+        height: 50vh;
     }
 
     .hero h1 {
@@ -834,88 +828,4 @@ textarea {
         margin-bottom: 0.5rem;
         margin-right: 0; /* スマートフォン用に右側のスペースをリセット */
     }
-}
-/* Adjustments to increase the top page size */
-.hero {
-    position: relative;
-    width: 100%;
-    margin-top: 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 2 columns layout */
-    gap: 20px;
-    max-width: 1200px; /* Adjusted from 100% to 1200px for larger size */
-    margin: 60px auto 0;
-    padding: 0;
-}
-
-.hero-fixed {
-    width: 100%;
-    height: calc(100vh - 60px); /* Adjusted height for larger screen */
-    overflow: hidden;
-}
-
-.hero-fixed img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.slideshow {
-    width: 100%;
-    height: calc(100vh - 60px); /* Adjusted height for larger screen */
-    position: relative;
-    overflow: hidden;
-}
-
-.slide {
-    display: none;
-    width: 100%;
-    height: 100%;
-}
-
-.slide.active {
-    display: block;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* Increase the size of the hero content */
-.hero-content {
-    width: 100%;
-    background-color: #808080;
-    padding: 2.5rem 0; /* Increased padding for larger content */
-    text-align: center;
-    position: relative;
-    margin-top: -4px;
-}
-
-.hero h1 {
-    color: #ffffff;
-    font-size: 4rem; /* Increased font size */
-    margin: 0;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
-
-/* Adjust CTA button size */
-.cta-button {
-    display: inline-block;
-    padding: 1.5rem 4rem; /* Increased padding */
-    background-color: #ffffff;
-    color: #003399;
-    text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    margin-bottom: 0.5rem;
-}
-
-.cta-button:hover {
-    background-color: #e6f3ff;
-    color: #003399;
 }
