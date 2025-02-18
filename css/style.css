@@ -161,36 +161,35 @@ main {
     padding-top: 60px; /* ヘッダーの高さ分だけ確保 */
 }
 
+/* ヒーローセクションの基本設定 */
 .hero {
     position: relative;
-    width: 100vw; /* ビューポート幅いっぱいに */
-    margin: 60px 0 0 0; /* 上部のマージンのみ設定 */
+    width: 100%;
+    margin-top: 60px; /* ヘッダーの高さ分 */
     display: grid;
-    grid-template-columns: 50vw 50vw; /* ビューポート幅の半分ずつ */
+    grid-template-columns: 1fr 1fr;
     gap: 0;
     padding: 0;
-}
-
-/* 固定画像のスタイル */
-.hero-fixed {
-    width: 50vw;
-    height: 90vh; /* ビューポートの90%の高さ */
-}
-
-.hero-fixed img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* スライドショーのスタイル */
-.slideshow {
-    width: 50vw;
-    height: 90vh; /* 固定画像と同じ高さ */
-    position: relative;
     overflow: hidden;
 }
 
+/* 固定画像とスライドショーの共通設定 */
+.hero-fixed,
+.slideshow {
+    width: 100%;
+    height: calc(100vh - 60px); /* ヘッダーを除いた画面高さ */
+}
+
+/* 画像の基本設定 */
+.hero-fixed img,
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* スライドの設定 */
 .slide {
     display: none;
     width: 100%;
@@ -199,12 +198,6 @@ main {
 
 .slide.active {
     display: block;
-}
-
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 /* フェードアニメーション */
@@ -259,16 +252,15 @@ main {
     color: #003399;
 }
 
-/* レスポンシブ対応 */
+/* レスポンシブ設定 */
 @media (max-width: 768px) {
     .hero {
         grid-template-columns: 1fr;
-        margin-top: 120px;
     }
 
     .hero-fixed,
     .slideshow {
-        width: 100vw;
+        width: 100%;
         height: 50vh;
     }
 
@@ -283,6 +275,13 @@ main {
 
     .cta-button {
         padding: 0.8rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-fixed,
+    .slideshow {
+        height: 40vh;
     }
 }
 
@@ -827,101 +826,5 @@ textarea {
     .radio-group label {
         margin-bottom: 0.5rem;
         margin-right: 0; /* スマートフォン用に右側のスペースをリセット */
-    }
-}
-.hero-fixed img, 
-.slide img {
-    width: 100%;
-    height: 100vh; /* 画面全体の高さに調整 */
-    object-fit: cover;
-    object-position: center;
-}
-.hero-fixed img, 
-.slide img {
-    width: 100%;
-    height: auto; /* 高さを自動にして、幅に合わせる */
-    max-height: 100vh; /* 最大高さをビューポートの高さに制限 */
-    object-fit: cover;
-    object-position: center;
-}　
-/* ヒーローセクションの調整 */
-.hero {
-    position: relative;
-    width: 100vw;
-    margin: 60px 0 0 0;
-    display: grid;
-    grid-template-columns: 50vw 50vw;
-    gap: 0;
-    padding: 0;
-}
-
-/* PC用画像設定（画面の高さいっぱい） */
-.hero-fixed,
-.slideshow {
-    width: 50vw;
-    height: calc(100vh - 60px); /* ヘッダー分を差し引いた高さ */
-}
-
-.hero-fixed img,
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* タブレットサイズ（768px以下） */
-@media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr;
-        margin-top: 60px;
-    }
-
-    .hero-fixed,
-    .slideshow {
-        width: 100vw;
-        height: 50vh; /* ビューポート高の50% */
-    }
-
-    .hero-fixed img,
-    .slide img {
-        height: 50vh;
-    }
-}
-
-/* スマートフォンサイズ（480px以下） */
-@media (max-width: 480px) {
-    .hero-fixed,
-    .slideshow {
-        height: 40vh; /* ビューポート高の40% */
-    }
-
-    .hero-fixed img,
-    .slide img {
-        height: 40vh;
-    }
-
-    .hero-content {
-        padding: 1rem 0;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-}
-
-/* 高解像度ディスプレイ対応 */
-@media (min-resolution: 2dppx) {
-    .hero-fixed img,
-    .slide img {
-        image-rendering: -webkit-optimize-contrast;
-    }
-}
-
-/* 横向き画面対応 */
-@media (orientation: landscape) and (max-height: 500px) {
-    .hero-fixed,
-    .slideshow {
-        height: 100vh;
     }
 }
