@@ -652,16 +652,16 @@ footer {
 
 .radio-group {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
+    flex-wrap: wrap;  /* 追加: 横幅を超えた場合は折り返し */
+    gap: 1rem;  /* 追加: ボタン間の間隔を設定 */
     margin-top: 0.5rem;
 }
 
-.radio-group label {
+.radio-label {
     display: inline-flex;
     align-items: center;
-    margin-right: 1rem; /* 右側にスペースを追加 */
+    margin-right: 1rem;
+    white-space: nowrap;  /* 追加: テキストの折り返しを防止 */
 }
 
 .radio-group input[type="radio"] {
@@ -829,10 +829,14 @@ textarea {
 
 @media screen and (max-width: 480px) {
     .radio-group {
-        flex-direction: column;
+        flex-direction: row;  /* 変更: columnからrowに */
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;  /* 縦0.5rem、横1remの間隔 */
     }
-    .radio-group label {
-        margin-bottom: 0.5rem;
-        margin-right: 0; /* スマートフォン用に右側のスペースをリセット */
+    
+    .radio-label {
+        margin-bottom: 0;  /* 変更: 下マージンを削除 */
+        margin-right: 0;  /* 変更: 右マージンを削除 */
+        min-width: auto;  /* 追加: 自然な幅に */
     }
 } 
