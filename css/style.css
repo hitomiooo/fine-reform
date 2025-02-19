@@ -69,9 +69,14 @@ nav ul li a {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
+    header {
+        height: auto;
+        min-height: 60px;
+    }
+
     nav {
-        padding: 10px 20px;
         flex-direction: column;
+        padding: 10px 20px;
     }
 
     .logo-image {
@@ -94,10 +99,24 @@ nav ul li a {
         font-size: 14px;
         padding: 5px 10px;
     }
+
+    /* スマホでのメインコンテンツの調整 */
+    main {
+        padding-top: 120px; /* スマホ用ヘッダーの高さに合わせて調整 */
+    }
+
+    /* ヒーローセクションの調整 */
+    .hero {
+        margin-top: 0; /* マージンをリセット */
+    }
 }
 
 /* さらに小さい画面用の調整 */
 @media (max-width: 480px) {
+    main {
+        padding-top: 140px; /* より小さい画面用にパディングを調整 */
+    }
+
     .logo-image {
         height: 35px;  /* さらに小さい画面用にロゴサイズを調整 */
     }
@@ -118,7 +137,7 @@ nav ul li a {
 
 main {
     width: 100%;
-    padding-top: 0;
+    padding-top: 60px; /* ヘッダーの高さ分のパディングを追加 */
     margin: 0;
 }
 
@@ -134,7 +153,7 @@ main {
     align-items: center;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 60px;  /* 変更: padding-topをmargin-topに変更 */
+    margin-top: 0; /* マージンをリセット */
 }
 
 /* 固定画像とスライドショーの共通設定 */
