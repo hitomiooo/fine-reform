@@ -33,8 +33,6 @@ nav {
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    max-width: 1200px;  /* 追加：最大幅を設定 */
-    margin: 0 auto;    /* 追加：中央揃え */
     padding: 0 40px;
 }
 
@@ -79,59 +77,47 @@ nav ul li a {
         padding: 10px 20px;
     }
 
-    .logo-image {
-        height: 40px;
-    }
-
     nav ul {
         width: 100%;
+        display: flex;
+        flex-direction: row;  /* 横並びを強制 */
+        flex-wrap: wrap;  /* 必要に応じて折り返し */
         justify-content: center;
-        padding: 0;
-        gap: 15px;
-        flex-wrap: wrap;
+        gap: 10px 20px;  /* 縦10px、横20pxの間隔 */
+        padding: 5px 0;
+        margin: 0;
     }
 
     nav ul li {
         margin: 0;
+        flex: 0 0 auto;  /* サイズを自動調整 */
     }
 
     nav ul li a {
         font-size: 14px;
         padding: 5px 10px;
+        white-space: nowrap;  /* テキストの折り返しを防止 */
     }
 
-    /* スマホでのメインコンテンツの調整 */
+    .logo-image {
+        height: 40px;
+        margin-bottom: 5px;  /* ロゴと下のメニューの間隔を調整 */
+    }
+
     main {
-        padding-top: 120px; /* スマホ用ヘッダーの高さに合わせて調整 */
-    }
-
-    /* ヒーローセクションの調整 */
-    .hero {
-        margin-top: 0; /* マージンをリセット */
+        padding-top: 100px;  /* ヘッダーの高さに合わせて調整 */
     }
 }
 
 /* さらに小さい画面用の調整 */
 @media (max-width: 480px) {
-    main {
-        padding-top: 140px; /* より小さい画面用にパディングを調整 */
-    }
-
-    .logo-image {
-        height: 35px;  /* さらに小さい画面用にロゴサイズを調整 */
-    }
-
-    nav ul li {
-        margin: 0.2rem 0.3rem;
+    nav ul {
+        gap: 8px 15px;  /* より小さい画面用に間隔を調整 */
     }
 
     nav ul li a {
-        font-size: 0.8rem;
+        font-size: 13px;
         padding: 4px 8px;
-    }
-
-    .hero h1 {
-        font-size: 1.5rem;
     }
 }
 
