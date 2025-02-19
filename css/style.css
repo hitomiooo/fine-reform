@@ -25,15 +25,17 @@ header {
     background-color: white;
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    height: 60px;  /* 固定の高さを設定 */
+    height: 60px;
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 100%;  /* ヘッダーの高さいっぱいに */
-    padding: 0 40px;  /* 左右のパディングを統一 */
+    height: 100%;
+    max-width: 1200px;  /* 追加：最大幅を設定 */
+    margin: 0 auto;    /* 追加：中央揃え */
+    padding: 0 40px;
 }
 
 .logo {
@@ -42,16 +44,16 @@ nav {
 }
 
 .logo-image {
-    height: 60px;  /* ロゴの高さを統一 */
+    height: 60px;
     width: auto;
-    padding: 5px 0;  /* 上下に少しパディングを追加 */
+    padding: 5px 0;
 }
 
 nav ul {
     display: flex;
     list-style: none;
     margin: 0;
-    padding-right: 40px;
+    align-items: center;  /* 追加：縦方向の中央揃え */
 }
 
 nav ul li {
@@ -62,71 +64,35 @@ nav ul li a {
     color: #003399;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px;  /* 追加：フォントサイズを統一 */
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
-    header {
-        height: auto;  /* 高さを自動調整 */
-        min-height: 60px;  /* 最小の高さを確保 */
-    }
-
     nav {
+        padding: 10px 20px;
         flex-direction: column;
-        padding: 10px;  /* パディングを統一 */
-    }
-
-    .logo {
-        margin-bottom: 10px;  /* ロゴとメニューの間隔を確保 */
     }
 
     .logo-image {
-        height: 40px;  /* スマホ用にロゴサイズを調整 */
+        height: 40px;
     }
 
     nav ul {
         width: 100%;
         justify-content: center;
         padding: 0;
-        margin: 0;
-        gap: 15px;  /* メニュー項目間の間隔を統一 */
+        gap: 15px;
         flex-wrap: wrap;
     }
 
     nav ul li {
-        margin: 0;  /* マージンをリセット */
+        margin: 0;
     }
 
     nav ul li a {
-        font-size: 0.9rem;
-        padding: 5px 10px;  /* パディングを統一 */
-        display: block;
-    }
-
-    .hero {
-        margin-top: 50px;
-    }
-
-    .hero-content {
-        padding: 1rem 0;
-    }
-
-    .hero h1 {
-        font-size: 1.8rem;
-    }
-
-    .cta-button {
-        padding: 0.8rem 2rem;
-        font-size: 0.9rem;
-    }
-
-    .plumber-illustration {
-        width: 100%;
-        height: auto;
-    }
-
-    .hero-image {
-        height: calc(100vh - 60px);
+        font-size: 14px;
+        padding: 5px 10px;
     }
 }
 
@@ -643,8 +609,8 @@ footer {
 
 .radio-group {
     display: flex;
-    flex-wrap: wrap;  /* 追加: 横幅を超えた場合は折り返し */
-    gap: 1rem;  /* 追加: ボタン間の間隔を設定 */
+    flex-wrap: wrap;
+    gap: 1rem;
     margin-top: 0.5rem;
 }
 
@@ -652,14 +618,39 @@ footer {
     display: inline-flex;
     align-items: center;
     margin-right: 1rem;
-    white-space: nowrap;  /* 追加: テキストの折り返しを防止 */
+    white-space: nowrap;
 }
 
-.radio-group input[type="radio"] {
-    margin: 0 0.5rem 0 0;
-    vertical-align: middle;
-    position: relative;
-    top: -1px;
+/* ラジオボタンのスタイルを統一 */
+.radio-label input[type="radio"] {
+    margin: 0;
+    width: 16px;  /* ラジオボタンのサイズを統一 */
+    height: 16px;  /* ラジオボタンのサイズを統一 */
+}
+
+/* ラジオボタンとテキストの間隔を統一 */
+.radio-text {
+    margin-left: 8px;  /* ラジオボタンとテキストの間隔を統一 */
+    font-size: 14px;  /* テキストサイズを統一 */
+    line-height: 1;  /* 行の高さを統一 */
+}
+
+/* スマートフォン用のスタイル */
+@media screen and (max-width: 480px) {
+    .radio-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+    }
+    
+    .radio-label {
+        margin: 0;  /* マージンをリセット */
+    }
+
+    .radio-text {
+        margin-left: 6px;  /* スマホ用に少し狭める */
+        font-size: 13px;  /* スマホ用に少し小さく */
+    }
 }
 
 textarea {
