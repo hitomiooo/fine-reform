@@ -10,11 +10,12 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden; /* 横スクロールを防止 */
     font-family: 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    background-color: #00d1f6;  /* 明るい水色 */
-    color: #333333;  /* 濃いグレー */
+    background-color: #00d1f6;
+    color: #333333;
+    width: 100%;
+    overflow-x: hidden;  /* 横スクロール防止 */
 }
 
 header {
@@ -123,15 +124,20 @@ nav ul li a {
 
 main {
     width: 100%;
-    padding-top: 60px; /* ヘッダーの高さ分のパディングを追加 */
-    margin: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 40px;
+    flex: 1;
 }
 
 /* ヒーローセクションの基本設定 */
 .hero {
     position: relative;
     width: 100vw;
-    margin: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 0;
+    max-width: none;
     overflow: hidden;
     height: calc(100vh - 60px);  /* 変更: 戻す */
     display: flex;
@@ -265,13 +271,18 @@ main {
     border-bottom: 1px solid #eee;
 }
 
+/* コンテンツ幅の統一 */
+section, 
 .company-info,
-main section {    /* すべてのメインコンテンツセクション */
-    background-color: white;    /* コンテンツ部分は白背景に */
-    padding: 20px;
-    border-radius: 8px;
-    margin: 20px auto;
+.workmate,
+.recruit-content,
+.contact {
+    width: 100%;
     max-width: 1200px;
+    margin: 0 auto 30px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .company-info table {
@@ -327,11 +338,12 @@ button:hover {
 }
 
 footer {
+    width: 100%;
     background-color: #333;
-    color: #fff;
+    color: white;
     text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
+    padding: 40px 0 20px;
+    margin-top: auto;
 }
 
 /* 代表挨拶のスタイル */
@@ -528,8 +540,10 @@ footer {
 }
 
 .footer-nav {
-    background: #f8f9fa;
-    padding: 2rem 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
 }
 
 .footer-nav ul {
@@ -761,10 +775,10 @@ textarea {
 }
 
 .member-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px; /* 元の間隔を維持 */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
 }
 
 .member {
@@ -826,4 +840,70 @@ textarea {
         margin-right: 0;  /* 変更: 右マージンを削除 */
         min-width: auto;  /* 追加: 自然な幅に */
     }
+}
+
+/* スマートフォン対応 */
+@media (max-width: 768px) {
+    main {
+        padding: 120px 20px 30px;
+    }
+
+    section,
+    .company-info,
+    .workmate,
+    .recruit-content,
+    .contact {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .footer-nav {
+        padding: 0 20px;
+    }
+}
+
+/* さらに小さい画面用 */
+@media (max-width: 480px) {
+    main {
+        padding: 140px 15px 20px;
+    }
+
+    section,
+    .company-info,
+    .workmate,
+    .recruit-content,
+    .contact {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+/* 特定ページの要素も幅を統一 */
+.company-info table,
+.member-container,
+.contact-form,
+.recruit-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* グリッドレイアウトの調整 */
+.member-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* フォーム要素の幅調整 */
+.form-group {
+    width: 100%;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea {
+    width: 100%;
+    max-width: 100%;
 } 
