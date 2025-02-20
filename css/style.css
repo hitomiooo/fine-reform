@@ -133,30 +133,26 @@ main {
 /* ヒーローセクションの基本設定 */
 .hero {
     position: relative;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    padding: 0;
-    max-width: none;
+    width: 100%;
+    max-width: 1200px;  /* 変更: 100vwから1200pxに */
+    margin: 60px auto 30px;  /* 変更: 中央配置のためautoを追加 */
     overflow: hidden;
-    height: calc(100vh - 60px);  /* 変更: 戻す */
+    height: 600px;  /* 変更: 固定の高さを設定 */
     display: flex;
     justify-content: center;
     align-items: center;
-    left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0; /* マージンをリセット */
+    left: auto;  /* 変更: 左寄せを解除 */
+    transform: none;  /* 変更: transformを解除 */
 }
 
 /* 固定画像とスライドショーの共通設定 */
 .hero-fixed,
 .slideshow {
     position: absolute;
-    top: 0;  /* 変更: 60pxから0に戻す */
-    left: 0;
-    transform: none;
     width: 100%;
-    height: 100%;  /* 変更: 100%に戻す */
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 /* 画像の基本設定 */
@@ -165,7 +161,7 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center center;  /* 変更: 明示的に中央配置を指定 */
+    object-position: center;
 }
 
 /* スライドの設定 */
@@ -238,7 +234,9 @@ main {
 /* レスポンシブ設定 */
 @media (max-width: 768px) {
     .hero {
-        height: 400px; /* タブレット用の高さはそのまま */
+        height: 400px;  /* スマホ用に高さを調整 */
+        margin: 100px auto 20px;  /* スマホ用にマージンを調整 */
+        width: 90%;  /* スマホ用に幅を調整 */
     }
 
     .hero h1 {
@@ -257,7 +255,8 @@ main {
 
 @media (max-width: 480px) {
     .hero {
-        height: 300px; /* スマートフォン用の高さ */
+        height: 300px;  /* 小さい画面用にさらに高さを調整 */
+        margin: 120px auto 15px;
     }
 }
 
