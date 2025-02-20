@@ -299,15 +299,34 @@ section,
     border-radius: 8px;
 }
 
+/* 会社情報テーブルのスタイル */
+.company-info {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
 .company-info table {
     width: 100%;
-    margin-top: 2rem;
+    border-collapse: collapse;
+    margin: 20px 0;
 }
 
 .company-info th,
 .company-info td {
-    padding: 1rem;
+    padding: 15px 20px;
     border: 1px solid #ddd;
+    text-align: left;
+}
+
+.company-info th {
+    width: 25%;
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.company-info td {
+    width: 75%;
 }
 
 .company-info p,
@@ -421,6 +440,19 @@ footer {
 
     .ceo-image {
         margin-bottom: 2rem;
+    }
+
+    .company-info {
+        padding: 15px;
+    }
+
+    .company-info table {
+        margin: 10px 0;
+    }
+
+    .company-info th,
+    .company-info td {
+        padding: 10px;
     }
 }
 
