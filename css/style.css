@@ -472,44 +472,41 @@ footer {
     max-width: 1200px;
     margin: 0 auto 30px;
     display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .recruit-tabs {
-    width: 200px;
-    padding: 20px 0;
+    width: 100%;
+    padding: 20px;
     background: #f5f5f5;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
-.recruit-tabs ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.recruit-tabs li {
+.recruit-tabs button {
     padding: 10px 20px;
-    border-left: 4px solid transparent;
+    border: none;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
 }
 
-.recruit-tabs li:hover {
-    background: #e0e0e0;
-    border-left-color: #666;
-}
-
-.recruit-tabs a {
-    text-decoration: none;
-    color: #333;
-    display: block;
+.recruit-tabs button.active {
+    background: #007bff;
+    color: white;
 }
 
 .recruit-content {
     flex: 1;
     padding: 20px;
-    width: auto;
+    width: 100%;
     max-width: none;
     margin: 0;
     background: none;
@@ -523,6 +520,12 @@ footer {
 
 .tab-content.active {
     display: block;
+}
+
+.tab-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
 }
 
 .recruit-message {
@@ -899,20 +902,24 @@ textarea {
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
     .recruit-container {
-        flex-direction: column;
         width: 90%;
     }
 
     .recruit-tabs {
-        width: 100%;
-        border-radius: 10px 10px 0 0;
+        padding: 15px;
     }
 
-    section, 
-    .company-info,
-    .workmate,
-    .recruit-content,
-    .contact {
-        width: 90%;
+    .recruit-tabs button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .tab-content {
+        padding: 15px;
+    }
+
+    .tab-content img {
+        width: 100%;
+        margin: 15px 0;
     }
 }
