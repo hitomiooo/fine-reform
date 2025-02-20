@@ -906,4 +906,188 @@ textarea {
 .form-group textarea {
     width: 100%;
     max-width: 100%;
+}
+
+/* フルードグリッドの基本設定 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* メインコンテンツ */
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 40px 40px;
+}
+
+/* セクション共通のグリッド設定 */
+section {
+    grid-column: span 12;
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+/* 会社情報ページのグリッド */
+.company-info {
+    grid-column: span 12;
+}
+
+/* ワークメイトページのグリッド */
+.member-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+.member {
+    grid-column: span 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* リクルートページのグリッド */
+.recruit-container {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+}
+
+.recruit-sidebar {
+    grid-column: span 3;
+}
+
+.recruit-content {
+    grid-column: span 9;
+}
+
+/* お問い合わせページのグリッド */
+.contact-container {
+    grid-column: span 12;
+}
+
+.form-group {
+    grid-column: span 12;
+    margin-bottom: 20px;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1024px) {
+    .recruit-sidebar {
+        grid-column: span 4;
+    }
+    
+    .recruit-content {
+        grid-column: span 8;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-container {
+        gap: 20px;
+    }
+
+    main {
+        padding: 120px 20px 30px;
+    }
+
+    .member-container {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .recruit-sidebar,
+    .recruit-content {
+        grid-column: span 12;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-container {
+        gap: 15px;
+    }
+
+    main {
+        padding: 140px 15px 20px;
+    }
+
+    .member-container {
+        grid-template-columns: 1fr;
+    }
+
+    section,
+    .company-info,
+    .member,
+    .recruit-container,
+    .contact-container {
+        padding: 15px;
+    }
+}
+
+/* ヒーローセクションのグリッド */
+.hero {
+    grid-column: 1 / -1;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+/* フッターのグリッド */
+footer {
+    width: 100%;
+}
+
+.footer-nav {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.footer-nav ul {
+    grid-column: span 12;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+/* テーブルのグリッド対応 */
+.company-info table {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+.company-info tr {
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+
+/* フォームのグリッド対応 */
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
+
+.form-group.full-width {
+    grid-column: span 12;
+}
+
+.form-group.half-width {
+    grid-column: span 6;
 } 
