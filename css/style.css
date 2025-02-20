@@ -756,39 +756,74 @@ textarea {
 
 .member-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
     padding: 20px;
 }
 
 .member {
-    text-align: center;
-    padding: 30px;
     background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .member img {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .member h3 {
-    margin: 15px 0;
-    color: #003399;
-    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
 }
 
 .member p {
-    margin: 8px 0;
-    line-height: 1.6;
-    font-size: 16px;
+    margin: 5px 0;
+    color: #666;
+}
+
+/* スマートフォン用のスタイル */
+@media (max-width: 768px) {
+    .member-container {
+        grid-template-columns: 1fr;  /* 1列に変更 */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .member {
+        display: flex;
+        flex-direction: row;  /* 横並びに変更 */
+        align-items: center;
+        text-align: left;     /* テキストを左寄せ */
+        padding: 15px;
+    }
+
+    .member img {
+        width: 40%;          /* 画像幅を40%に */
+        min-width: 120px;    /* 最小幅を設定 */
+        margin-right: 15px;   /* 右側の余白 */
+        margin-bottom: 0;     /* 下マージンを削除 */
+    }
+
+    .member-text {
+        flex: 1;            /* 残りのスペースを文章が占める */
+    }
+
+    .member h3 {
+        margin: 5px 0;
+        font-size: 16px;    /* フォントサイズ調整 */
+    }
+
+    .member p {
+        margin: 3px 0;
+        font-size: 14px;    /* フォントサイズ調整 */
+        line-height: 1.4;   /* 行間調整 */
+    }
 }
 
 /* スライドショーの基本スタイル */
