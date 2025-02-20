@@ -1189,3 +1189,19 @@ footer {
         height: 50vh;
     }
 } 
+/* スライドショー */
+.slideshow-container {
+    width: 100%;                /* 幅を100%に */
+    max-width: 4000px;         /* 最大幅を4000pxに制限 */
+    height: 250vh;             /* 高さを画面の2.5倍に */
+    margin: 0 auto;            /* 左右中央配置 */
+    position: relative;        /* 位置決めの基準点 */
+    overflow: hidden;          /* はみ出し部分を隠す */
+}
+
+.slide img {
+    width: 100%;              /* 画像の幅を100%に */
+    height: 100%;             /* 画像の高さを100%に */
+    object-fit: contain;      /* 画像のアスペクト比を保持 */
+    object-position: top center; /* 画像を上部中央に配置 */
+}
