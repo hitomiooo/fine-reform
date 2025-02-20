@@ -1148,10 +1148,12 @@ footer {
 }
 
 /* スライドショーの基本スタイル */
-.slideshow {
-    position: relative;
+.slideshow-container {
     width: 100%;
-    height: 100vh;
+    max-width: 3000px;         /* 幅を3000pxに変更 */
+    height: 600px;             
+    margin: 60px auto 30px;    
+    position: relative;
     overflow: hidden;
 }
 
@@ -1172,36 +1174,30 @@ footer {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center;
+    object-fit: contain;      /* 画像のアスペクト比を保持 */
+    object-position: center;   /* 中央に配置 */
 }
 
 /* スマートフォン対応 */
 @media (max-width: 768px) {
-    .slideshow {
-        height: 60vh;
+    .slideshow-container {
+        height: 400px;        /* スマホ用に高さを調整 */
+        margin: 80px auto 20px; /* マージンを調整 */
     }
 }
 
 /* 小さな画面用の追加調整 */
 @media (max-width: 480px) {
-    .slideshow {
-        height: 50vh;
+    .slideshow-container {
+        height: 300px;        /* より小さい画面用に高さを調整 */
+        margin: 100px auto 15px;
     }
-} 
-/* スライドショー */
-.slideshow-container {
-    width: 100%;                /* 幅を100%に */
-    max-width: 4000px;         /* 最大幅を4000pxに制限 */
-    height: 250vh;             /* 高さを画面の2.5倍に */
-    margin: 0 auto;            /* 左右中央配置 */
-    position: relative;        /* 位置決めの基準点 */
-    overflow: hidden;          /* はみ出し部分を隠す */
 }
 
-.slide img {
-    width: 100%;              /* 画像の幅を100%に */
-    height: 100%;             /* 画像の高さを100%に */
-    object-fit: contain;      /* 画像のアスペクト比を保持 */
-    object-position: top center; /* 画像を上部中央に配置 */
+/* お知らせセクションのスタイル修正 */
+.news {
+    background-color: white;    /* 背景色を白に */
+    border-radius: 0;          /* 角を無くす */
+    padding: 30px;
+    margin-bottom: 30px;
 }
