@@ -1,27 +1,27 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let slideIndex = 0;
-    const slides = document.getElementsByClassName("slide");
-    
-    function showSlides() {
-        // すべてのスライドを非表示
-        for (let i = 0; i < slides.length; i++) {
-            slides[i].style.opacity = "0";
-            slides[i].style.display = "none";
-        }
-        
-        // 次のスライドへ
-        slideIndex++;
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-        
-        // 現在のスライドを表示
-        slides[slideIndex-1].style.opacity = "1";
-        slides[slideIndex-1].style.display = "block";
-        
-        // 5秒後に次のスライドへ
-        setTimeout(showSlides, 5000);
+let slideIndex = 0;
+const slides = document.querySelectorAll('.slide');
+
+function showSlides() {
+    // すべてのスライドを非表示
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('active');
     }
     
+    // 次のスライドインデックスを計算
+    slideIndex++;
+    if (slideIndex >= slides.length) {
+        slideIndex = 0;
+    }
+    
+    // 現在のスライドを表示
+    slides[slideIndex].classList.add('active');
+    
+    // 5秒後に次のスライドを表示
+    setTimeout(showSlides, 5000);
+}
+
+// 最初のスライドを表示
+document.addEventListener('DOMContentLoaded', function() {
+    slides[0].classList.add('active');
     showSlides();
 }); 
