@@ -15,7 +15,7 @@ body {
     background-color: #00d1f6;
     color: #333333;
     width: 100%;
-    overflow-x: hidden;  /* 横スクロール防止 */
+    overflow-x: hidden;
 }
 
 header {
@@ -52,7 +52,7 @@ nav ul {
     display: flex;
     list-style: none;
     margin: 0;
-    align-items: center;  /* 追加：縦方向の中央揃え */
+    align-items: center;
 }
 
 nav ul li {
@@ -63,10 +63,9 @@ nav ul li a {
     color: #003399;
     text-decoration: none;
     font-weight: bold;
-    font-size: 16px;  /* 追加：フォントサイズを統一 */
+    font-size: 16px;
 }
 
-/* レスポンシブ対応 */
 @media (max-width: 768px) {
     header {
         height: auto;
@@ -80,40 +79,44 @@ nav ul li a {
 
     nav ul {
         width: 100%;
-        display: flex;
-        flex-direction: row;  /* 横並びを強制 */
-        flex-wrap: wrap;  /* 必要に応じて折り返し */
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 10px 20px;  /* 縦10px、横20pxの間隔 */
+        gap: 10px 20px;
         padding: 5px 0;
-        margin: 0;
     }
 
     nav ul li {
         margin: 0;
-        flex: 0 0 auto;  /* サイズを自動調整 */
+        flex: 0 0 auto;
     }
 
     nav ul li a {
         font-size: 14px;
         padding: 5px 10px;
-        white-space: nowrap;  /* テキストの折り返しを防止 */
+        white-space: nowrap;
     }
 
     .logo-image {
         height: 40px;
-        margin-bottom: 5px;  /* ロゴと下のメニューの間隔を調整 */
+        margin-bottom: 5px;
     }
 
     main {
-        padding-top: 100px;  /* ヘッダーの高さに合わせて調整 */
+        padding-top: 100px;
+    }
+
+    /* スマートフォン用のスタイル */
+    .slideshow-container {
+        width: 90%;
+        margin: 40px auto 20px;
+        height: 300px;
     }
 }
 
-/* さらに小さい画面用の調整 */
 @media (max-width: 480px) {
     nav ul {
-        gap: 8px 15px;  /* より小さい画面用に間隔を調整 */
+        gap: 8px 15px;
     }
 
     nav ul li a {
@@ -123,31 +126,24 @@ nav ul li a {
 }
 
 main {
-    width: 1200px;  /* 固定幅に変更 */
+    width: 100%;
     margin: 0 auto;
     padding: 80px 0 40px;
     flex: 1;
 }
 
-/* ヒーローセクションの基本設定 */
 .hero {
     position: relative;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    padding: 0;
+    width: 100%;
     max-width: 1200px;
-    margin: 80px auto 30px;  /* 変更: 上部マージンを調整 */
+    margin: 80px auto 30px;
     overflow: hidden;
     height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 50%;  /* 追加: 中央配置のため */
-    transform: translateX(-50%);  /* 追加: 中央配置のため */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* 固定画像とスライドショーの共通設定 */
 .hero-fixed,
 .slideshow {
     position: absolute;
@@ -155,36 +151,32 @@ main {
     height: 100%;
     top: 0;
     left: 0;
-    right: 0;  /* 追加: 水平方向の中央配置を確実に */
-    margin: 0 auto;  /* 追加: 水平方向の中央配置を確実に */
 }
 
-/* 画像の基本設定 */
 .hero-fixed img,
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;  /* 変更: coverからcontainに */
+    object-fit: cover;
     object-position: center;
-    max-height: 600px;  /* 追加: 最大高さを制限 */
 }
 
-/* スライドの設定 */
 .slide {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: none;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .slide.active {
-    display: block;
+    display: flex;
 }
 
-/* フェードアニメーション */
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -236,17 +228,11 @@ main {
     color: #003399;
 }
 
-/* レスポンシブ設定 */
 @media (max-width: 768px) {
     .hero {
         height: 400px;
-        margin: 120px auto 20px;  /* 変更: 上部マージンを調整 */
-        width: 85%;  /* 変更: スマホ用に幅を調整 */
-    }
-
-    .hero-fixed img,
-    .slide img {
-        max-height: 400px;
+        margin: 120px auto 20px;
+        width: 85%;
     }
 
     .hero h1 {
@@ -266,13 +252,8 @@ main {
 @media (max-width: 480px) {
     .hero {
         height: 300px;
-        margin: 140px auto 15px;  /* 変更: さらに上部マージンを調整 */
-        width: 80%;  /* 変更: より小さい画面用に幅を調整 */
-    }
-
-    .hero-fixed img,
-    .slide img {
-        max-height: 300px;
+        margin: 140px auto 15px;
+        width: 80%;
     }
 }
 
@@ -286,23 +267,23 @@ main {
     border-bottom: 1px solid #eee;
 }
 
-/* コンテンツ幅の統一 */
 section, 
 .company-info,
 .workmate,
 .recruit-content,
 .contact {
-    width: 1200px;  /* 固定幅に変更 */
+    width: 90%;
+    max-width: 1200px;
     margin: 0 auto 30px;
     padding: 30px;
     background-color: white;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* 会社情報テーブルのスタイル */
 .company-info-table {
-    width: 80%;  /* テーブル幅を80%に設定 */
-    margin: 40px auto;  /* 上下マージン40px、左右auto で中央配置 */
+    width: 80%;
+    margin: 40px auto;
     border-collapse: collapse;
     background-color: white;
 }
@@ -310,7 +291,7 @@ section,
 .company-info-table th,
 .company-info-table td {
     padding: 20px;
-    border: 1px solid #ddd;  /* 境界線を統一 */
+    border: 1px solid #ddd;
     line-height: 1.6;
 }
 
@@ -318,7 +299,7 @@ section,
     width: 25%;
     background-color: #f5f5f5;
     font-weight: bold;
-    text-align: center;  /* 見出しを中央揃え */
+    text-align: center;
     vertical-align: top;
 }
 
@@ -332,14 +313,13 @@ section,
 }
 
 .company-info-table td p {
-    margin: 0 0 10px 0;  /* 段落間の余白を設定 */
+    margin: 0 0 10px 0;
 }
 
-/* スマートフォン対応 */
 @media (max-width: 768px) {
     .company-info-table {
-        width: 95%;  /* スマホでは幅を95%に */
-        margin: 20px auto;  /* マージンを調整 */
+        width: 95%;
+        margin: 20px auto;
     }
 
     .company-info-table th,
@@ -393,7 +373,6 @@ footer {
     margin-top: auto;
 }
 
-/* 代表挨拶のスタイル */
 .ceo-message {
     margin-bottom: 60px;
     background-color: #fff;
@@ -435,11 +414,6 @@ footer {
     line-height: 1.8;
 }
 
-.message-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* スマートフォン対応 */
 @media (max-width: 768px) {
     .ceo-message {
         margin-bottom: 40px;
@@ -457,13 +431,8 @@ footer {
         max-width: 300px;
         margin: 0 auto;
     }
-
-    .message-text p {
-        margin-bottom: 12px;
-    }
 }
 
-/* カーソル共有のスタイル */
 .shared-cursor {
     position: absolute;
     width: 2px;
@@ -499,14 +468,20 @@ footer {
 }
 
 .recruit-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 30px;
     display: flex;
-    margin: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .recruit-tabs {
     width: 200px;
-    background: #f5f5f5;
     padding: 20px 0;
+    background: #f5f5f5;
+    border-radius: 10px 0 0 10px;
 }
 
 .recruit-tabs ul {
@@ -534,6 +509,11 @@ footer {
 .recruit-content {
     flex: 1;
     padding: 20px;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    background: none;
+    box-shadow: none;
 }
 
 .tab-content {
@@ -542,11 +522,6 @@ footer {
 }
 
 .tab-content.active {
-    display: block;
-}
-
-/* タブの切り替えのためのJavaScript用スタイル */
-.tab-content:target {
     display: block;
 }
 
@@ -593,7 +568,7 @@ footer {
 }
 
 .footer-nav {
-    width: 1200px;  /* 固定幅に変更 */
+    width: 1200px;
     margin: 0 auto;
     padding: 0;
 }
@@ -623,8 +598,8 @@ footer {
 }
 
 .company-info-table ul {
-    list-style: disc;  /* 黒丸のリストマーカーを設定 */
-    padding-left: 1.5em;  /* 左の余白を追加 */
+    list-style: disc;
+    padding-left: 1.5em;
     margin: 0;
 }
 
@@ -692,35 +667,31 @@ footer {
     white-space: nowrap;
 }
 
-/* ラジオボタンのスタイルを統一 */
 .radio-label input[type="radio"] {
     margin: 0;
-    width: 16px;  /* ラジオボタンのサイズを統一 */
-    height: 16px;  /* ラジオボタンのサイズを統一 */
+    width: 16px;
+    height: 16px;
 }
 
-/* ラジオボタンとテキストの間隔を統一 */
 .radio-text {
-    margin-left: 8px;  /* ラジオボタンとテキストの間隔を統一 */
-    font-size: 14px;  /* テキストサイズを統一 */
-    line-height: 1;  /* 行の高さを統一 */
+    margin-left: 8px;
+    font-size: 14px;
+    line-height: 1;
 }
 
-/* スマートフォン用のスタイル */
 @media screen and (max-width: 480px) {
     .radio-group {
         flex-direction: row;
-        flex-wrap: wrap;
         gap: 0.5rem 1rem;
     }
     
     .radio-label {
-        margin: 0;  /* マージンをリセット */
+        margin: 0;
     }
 
     .radio-text {
-        margin-left: 6px;  /* スマホ用に少し狭める */
-        font-size: 13px;  /* スマホ用に少し小さく */
+        margin-left: 6px;
+        font-size: 13px;
     }
 }
 
@@ -752,9 +723,8 @@ textarea {
     font-size: 0.9em;
 }
 
-/* 郵便番号入力欄のスタイル */
 #postal {
-    width: 200px;  /* 郵便番号用に幅を調整 */
+    width: 200px;
 }
 
 .address-group {
@@ -776,11 +746,8 @@ textarea {
     border-color: #007bff;
 }
 
-/* セレクトボックスの矢印をカスタマイズ */
 .address-group select {
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
     background-repeat: no-repeat;
     background-position: right 0.7rem center;
@@ -788,9 +755,8 @@ textarea {
     padding-right: 2.5rem;
 }
 
-/* 採用ページのナビゲーション用スタイル */
 .recruit-nav li a {
-    color: #000000; /* 黒色に変更 */
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     font-size: 1.1rem;
@@ -800,10 +766,9 @@ textarea {
 }
 
 .recruit-nav li a:hover {
-    color: #333333; /* ホバー時の色も暗めに調整 */
+    color: #333333;
 }
 
-/* 既存のナビゲーションリンクも黒に変更 */
 .recruit-content ul li a {
     color: #000000;
     text-decoration: none;
@@ -815,7 +780,7 @@ textarea {
 }
 
 .workmate {
-    max-width: 900px; /* 元の幅を維持 */
+    max-width: 900px;
     margin: 0 auto;
     padding: 13px;
 }
@@ -823,12 +788,12 @@ textarea {
 .workmate h1 {
     text-align: center;
     margin-bottom: 27px;
-    font-size: 1.62rem; /* 10%縮小 */
+    font-size: 1.62rem;
 }
 
 .member-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* 2列に変更 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     max-width: 1200px;
     margin: 0 auto;
@@ -845,7 +810,7 @@ textarea {
 
 .member img {
     width: 100%;
-    max-width: 400px;  /* 画像の最大幅を増やす */
+    max-width: 400px;
     height: auto;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -863,341 +828,91 @@ textarea {
     font-size: 16px;
 }
 
-/* スマートフォン対応 */
-@media (max-width: 768px) {
-    .member-container {
-        grid-template-columns: 1fr;  /* スマホでは1列に */
-        gap: 20px;
-        padding: 10px;
-    }
-
-    .member {
-        padding: 20px;
-    }
-
-    .member img {
-        max-width: 300px;  /* スマホでは小さめに */
-    }
-
-    .member h3 {
-        font-size: 18px;
-    }
-
-    .member p {
-        font-size: 14px;
-    }
-}
-
-/* スマートフォン対応 */
-@media (max-width: 1200px) {  /* ブレイクポイントを1200pxに変更 */
-    main,
-    section,
-    .company-info,
-    .workmate,
-    .recruit-content,
-    .contact,
-    .footer-nav {
-        width: 100%;  /* 画面幅が1200px未満の場合は100%幅に */
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-
-@media (max-width: 768px) {
-    main {
-        padding: 120px 20px 30px;
-    }
-
-    section,
-    .company-info,
-    .workmate,
-    .recruit-content,
-    .contact {
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .footer-nav {
-        padding: 0 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    main {
-        padding: 140px 15px 20px;
-    }
-
-    section,
-    .company-info,
-    .workmate,
-    .recruit-content,
-    .contact {
-        padding: 15px;
-        margin-bottom: 15px;
-    }
-}
-
-/* 特定ページの要素も固定幅に */
-.company-info table,
-.member-container,
-.contact-form,
-.recruit-container {
-    width: 100%;
-}
-
-/* メンバーグリッドを固定カラムに */
-.member-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);  /* 3列固定に変更 */
-    gap: 30px;
-}
-
-@media (max-width: 768px) {
-    .member-container {
-        grid-template-columns: repeat(2, 1fr);  /* タブレットでは2列に */
-    }
-}
-
-@media (max-width: 480px) {
-    .member-container {
-        grid-template-columns: 1fr;  /* スマホでは1列に */
-    }
-}
-
-/* フッターのグリッド */
-footer {
-    width: 100%;
-}
-
-.footer-nav {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 40px;
-}
-
-.footer-nav ul {
-    grid-column: span 12;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-}
-
-/* テーブルのグリッド対応 */
-.company-info table {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-}
-
-.company-info tr {
-    grid-column: span 12;
-    display: grid;
-    grid-template-columns: 3fr 9fr;
-}
-
-/* フォームのグリッド対応 */
-.form-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-}
-
-.form-group.full-width {
-    grid-column: span 12;
-}
-
-.form-group.half-width {
-    grid-column: span 6;
-}
-
-/* 新しい会社概要ページのスタイル */
-.company-section {
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 40px;
-    background-color: white;
-    border-radius: 8px;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 24px;
-    color: #003399;
-}
-
-.company-info-table {
-    width: 100%;
-    margin: 0 auto;
-    border-collapse: collapse;
-}
-
-.company-info-table th,
-.company-info-table td {
-    padding: 20px;
-    border: 1px solid #ddd;
-    line-height: 1.6;
-}
-
-.company-info-table th {
-    width: 25%;
-    background-color: #f5f5f5;
-    font-weight: bold;
-    text-align: center;
-    vertical-align: top;
-}
-
-.company-info-table td {
-    width: 75%;
-}
-
-.company-info-table td ul {
-    margin: 0;
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-.company-info-table td p {
-    margin: 0 0 10px 0;
-}
-
-/* スマートフォン対応 */
-@media (max-width: 768px) {
-    .company-section {
-        margin: 20px auto;
-        padding: 20px;
-    }
-
-    .company-info-table th,
-    .company-info-table td {
-        padding: 15px;
-    }
-}
-
-/* 採用情報のスタイル修正 */
-.recruit-sections {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.recruit-section {
-    background-color: white;
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 30px;
-    width: 100%;  /* 幅を100%に設定 */
-    box-sizing: border-box;  /* パディングを幅に含める */
-}
-
-.section-content {
-    width: 100%;
-    margin: 0 auto;
-}
-
-/* 給与カードのレイアウト調整 */
-.salary-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-}
-
-.salary-card {
-    flex: 1;
-    min-width: 250px;
-    max-width: 300px;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-    text-align: center;
-}
-
-/* 応募ボタンの調整 */
-.contact-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    width: 100%;
-}
-
-/* スマートフォン対応 */
-@media (max-width: 768px) {
-    .recruit-sections {
-        padding: 10px;
-    }
-
-    .recruit-section {
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    .salary-card {
-        min-width: 100%;
-    }
-
-    .contact-buttons {
-        flex-direction: column;
-    }
-}
-
 /* スライドショーの基本スタイル */
 .slideshow-container {
-    width: 100%;
-    max-width: 3000px;         /* 幅を3000pxに変更 */
-    height: 600px;             
-    margin: 60px auto 30px;    
+    width: 90%;
+    max-width: 1200px;
+    height: 500px;
+    margin: 0 auto;
     position: relative;
-    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 10px;        /* 角を丸く */
+    overflow: hidden;           /* 画像が角からはみ出すのを防ぐ */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* 軽い影を追加 */
+}
+
+.slideshow {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .slide {
+    display: none;
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
 }
 
 .slide.active {
-    opacity: 1;
+    display: block;
 }
 
 .slide img {
     width: 100%;
-    height: 100%;
-    object-fit: contain;      /* 画像のアスペクト比を保持 */
-    object-position: center;   /* 中央に配置 */
+    height: 500px;
+    object-fit: contain;
+    object-position: center;
 }
 
-/* スマートフォン対応 */
+/* スマートフォン用の画像サイズ調整 */
 @media (max-width: 768px) {
-    .slideshow-container {
-        height: 400px;        /* スマホ用に高さを調整 */
-        margin: 80px auto 20px; /* マージンを調整 */
+    .slide img {
+        height: 300px;
     }
 }
 
-/* 小さな画面用の追加調整 */
-@media (max-width: 480px) {
-    .slideshow-container {
-        height: 300px;        /* より小さい画面用に高さを調整 */
-        margin: 100px auto 15px;
-    }
-}
-
-/* お知らせセクションのスタイル修正 */
+/* お知らせセクション */
 .news {
-    background-color: white;    /* 背景色を白に */
-    border-radius: 0;          /* 角を無くす */
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    background-color: white;
+    border-radius: 10px;        /* 角を丸く */
     padding: 30px;
-    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news h2 {
+    margin-bottom: 20px;
+}
+
+.news ul {
+    list-style: none;
+}
+
+.news li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .recruit-container {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .recruit-tabs {
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    section, 
+    .company-info,
+    .workmate,
+    .recruit-content,
+    .contact {
+        width: 90%;
+    }
 }
