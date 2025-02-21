@@ -776,39 +776,53 @@ textarea {
 /* スマートフォン用のスタイル */
 @media (max-width: 768px) {
     .member-container {
-        grid-template-columns: 1fr;  /* 1列に変更 */
+        grid-template-columns: 1fr;
         gap: 20px;
         padding: 10px;
     }
 
     .member {
-        display: flex;
-        flex-direction: row;  /* 横並びに変更 */
-        align-items: center;
-        text-align: left;     /* テキストを左寄せ */
+        display: grid;
+        grid-template-columns: 120px 1fr; /* 画像と文章を横並びに */
+        gap: 15px;
+        text-align: left;
         padding: 15px;
+        align-items: start;
     }
 
     .member img {
-        width: 40%;          /* 画像幅を40%に */
-        min-width: 120px;    /* 最小幅を設定 */
-        margin-right: 15px;   /* 右側の余白 */
-        margin-bottom: 0;     /* 下マージンを削除 */
+        width: 120px;
+        margin: 0;
+        grid-row: 1 / span 4; /* 画像を複数行にまたがるように */
     }
 
     .member-text {
-        flex: 1;            /* 残りのスペースを文章が占める */
+        display: block;
+        width: 100%;
     }
 
     .member h3 {
-        margin: 5px 0;
-        font-size: 16px;    /* フォントサイズ調整 */
+        margin: 0 0 5px 0;
+        font-size: 16px;
     }
 
     .member p {
         margin: 3px 0;
-        font-size: 14px;    /* フォントサイズ調整 */
-        line-height: 1.4;   /* 行間調整 */
+        font-size: 14px;
+        line-height: 1.4;
+        white-space: normal; /* 文章の改行を許可 */
+        word-break: break-word; /* 長い単語の改行を許可 */
+    }
+}
+
+/* より小さい画面用 */
+@media (max-width: 480px) {
+    .member {
+        grid-template-columns: 100px 1fr; /* 画像をさらに小さく */
+    }
+
+    .member img {
+        width: 100px;
     }
 }
 
