@@ -831,12 +831,11 @@ textarea {
     width: 90%;
     max-width: 1200px;
     height: 500px;
-    margin: 0 auto;
+    margin: 100px auto 30px;  /* 上部マージンを100pxに増やして下げる */
     position: relative;
     background-color: #ffffff;
-    border-radius: 10px;        /* 角を丸く */
-    overflow: hidden;           /* 画像が角からはみ出すのを防ぐ */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);  /* 軽い影を追加 */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .slideshow {
@@ -863,9 +862,10 @@ textarea {
     object-position: center;
 }
 
-/* スマートフォン用の画像サイズ調整 */
+/* スマートフォン用のスタイル */
 @media (max-width: 768px) {
-    .slide img {
+    .slideshow-container {
+        margin-top: 80px;    /* スマホ表示時は少し小さめに */
         height: 300px;
     }
 }
