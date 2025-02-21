@@ -831,7 +831,7 @@ textarea {
     width: 90%;
     max-width: 1200px;
     height: 500px;
-    margin: 100px auto 30px;  /* 上部マージンを100pxに増やして下げる */
+    margin: 80px auto 30px;  /* 上部マージンを100pxに増やして下げる */
     position: relative;
     background-color: #ffffff;
     border-radius: 10px;
@@ -865,7 +865,7 @@ textarea {
 /* スマートフォン用のスタイル */
 @media (max-width: 768px) {
     .slideshow-container {
-        margin-top: 80px;    /* スマホ表示時は少し小さめに */
+        margin-top: 70px;    /* スマホ表示時は少し小さめに */
         height: 300px;
     }
 }
