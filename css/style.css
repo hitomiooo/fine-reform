@@ -753,8 +753,8 @@ textarea {
 
 .workmate h1 {
     text-align: center;
-    margin-bottom: 27px;
-    font-size: 1.62rem;
+    margin: 80px 0 30px;
+    font-size: 24px;
 }
 
 .member-container {
@@ -792,50 +792,83 @@ textarea {
 
 /* スマートフォン用のスタイル */
 @media (max-width: 768px) {
+    .workmate h1 {
+        margin: 60px 0 20px;
+        font-size: 20px;
+    }
+
     .member-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 15px;
         padding: 10px;
     }
 
     .member {
         display: flex;
-        align-items: flex-start;
-        text-align: left;
         padding: 15px;
         gap: 15px;
+        align-items: center;
+        text-align: left;
+        background: #f9f9f9;
     }
 
     .member img {
-        width: 120px;
-        min-width: 120px;  /* 画像の最小幅を固定 */
+        width: 100px;
+        min-width: 100px;
+        height: 100px;
+        object-fit: cover;
         margin: 0;
+        border-radius: 50%;  /* 画像を円形に */
     }
 
     .member-text {
         flex: 1;
-        min-width: 0;      /* テキストの最小幅を0に設定 */
-        overflow: hidden;   /* はみ出しを防ぐ */
     }
 
     .member h3 {
-        margin: 0 0 5px 0;
         font-size: 16px;
+        margin: 0 0 5px;
+        color: #222;
     }
 
     .member p {
+        font-size: 13px;
+        line-height: 1.5;
         margin: 3px 0;
-        font-size: 14px;
-        line-height: 1.4;
-        word-wrap: break-word;  /* 長い単語を折り返す */
+        color: #444;
+    }
+
+    /* 名前の表示を強調 */
+    .member p:first-of-type {
+        font-size: 15px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 8px;
     }
 }
 
 /* より小さい画面用 */
 @media (max-width: 480px) {
+    .member {
+        padding: 12px;
+    }
+
     .member img {
-        width: 100px;
-        min-width: 100px;  /* より小さい画面用に画像サイズを調整 */
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+    }
+
+    .member h3 {
+        font-size: 15px;
+    }
+
+    .member p {
+        font-size: 12px;
+    }
+
+    .member p:first-of-type {
+        font-size: 14px;
     }
 }
 
