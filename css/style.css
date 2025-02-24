@@ -799,23 +799,23 @@ textarea {
     }
 
     .member {
-        display: grid;
-        grid-template-columns: 120px 1fr; /* 画像と文章を横並びに */
-        gap: 15px;
+        display: flex;
+        align-items: flex-start;
         text-align: left;
         padding: 15px;
-        align-items: start;
+        gap: 15px;
     }
 
     .member img {
         width: 120px;
+        min-width: 120px;  /* 画像の最小幅を固定 */
         margin: 0;
-        grid-row: 1 / span 4; /* 画像を複数行にまたがるように */
     }
 
     .member-text {
-        display: block;
-        width: 100%;
+        flex: 1;
+        min-width: 0;      /* テキストの最小幅を0に設定 */
+        overflow: hidden;   /* はみ出しを防ぐ */
     }
 
     .member h3 {
@@ -827,19 +827,15 @@ textarea {
         margin: 3px 0;
         font-size: 14px;
         line-height: 1.4;
-        white-space: normal; /* 文章の改行を許可 */
-        word-break: break-word; /* 長い単語の改行を許可 */
+        word-wrap: break-word;  /* 長い単語を折り返す */
     }
 }
 
 /* より小さい画面用 */
 @media (max-width: 480px) {
-    .member {
-        grid-template-columns: 100px 1fr; /* 画像をさらに小さく */
-    }
-
     .member img {
         width: 100px;
+        min-width: 100px;  /* より小さい画面用に画像サイズを調整 */
     }
 }
 
