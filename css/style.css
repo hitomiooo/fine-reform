@@ -1034,3 +1034,45 @@ textarea {
         background-color: #f2f2f2;
     }
 }
+/* スマートフォン向けのテーブルスタイル */
+@media screen and (max-width: 767px) {
+    .company-info-table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    .company-info-table table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed; /* テーブルレイアウトを固定 */
+    }
+
+    .company-info-table th,
+    .company-info-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal;
+        display: block; /* thとtdをブロック要素にする */
+        width: 100%; /* 幅を100%にする */
+        box-sizing: border-box; /* paddingとborderをwidthに含める */
+    }
+
+    .company-info-table th {
+        font-weight: bold;
+        background-color: #f2f2f2;
+    }
+
+    /* 奇数行の背景色を変更する */
+    .company-info-table tr:nth-child(odd) {
+        background-color: #fff; /* 奇数行の背景色を白にする */
+    }
+
+    .company-info-table tr {
+        margin-bottom: 10px; /* 行の下に余白を追加 */
+        display: block; /* 行をブロック要素にする */
+        border: 1px solid #ddd; /* 行にボーダーを追加 */
+    }
+}
