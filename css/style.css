@@ -807,7 +807,7 @@ textarea {
         display: flex;
         padding: 15px;
         gap: 15px;
-        align-items: center;
+        align-items: flex-start;
         text-align: left;
         background: #f9f9f9;
     }
@@ -818,17 +818,20 @@ textarea {
         height: 100px;
         object-fit: cover;
         margin: 0;
-        border-radius: 50%;  /* 画像を円形に */
+        border-radius: 50%;
     }
 
     .member-text {
         flex: 1;
+        min-width: 0;
     }
 
     .member h3 {
         font-size: 16px;
         margin: 0 0 5px;
         color: #222;
+        white-space: normal;
+        word-wrap: break-word;
     }
 
     .member p {
@@ -836,6 +839,9 @@ textarea {
         line-height: 1.5;
         margin: 3px 0;
         color: #444;
+        white-space: normal;
+        word-wrap: break-word;
+        width: 100%;
     }
 
     /* 名前の表示を強調 */
@@ -859,12 +865,17 @@ textarea {
         height: 80px;
     }
 
+    .member-text {
+        width: calc(100% - 95px);
+    }
+
     .member h3 {
         font-size: 15px;
     }
 
     .member p {
         font-size: 12px;
+        width: 100%;
     }
 
     .member p:first-of-type {
@@ -917,8 +928,8 @@ textarea {
 
     .slide img {
         height: 300px;
-        object-position: center top;  /* 画像の位置を上部に変更 */
-        padding-top: 0;              /* 上部のパディングを削除 */
+        object-position: center top;
+        padding-top: 0;
     }
 }
 
@@ -928,7 +939,7 @@ textarea {
     max-width: 1200px;
     margin: 30px auto 0;
     background-color: white;
-    border-radius: 10px;        /* 角を丸く */
+    border-radius: 10px;
     padding: 30px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
