@@ -794,55 +794,44 @@ textarea {
 @media (max-width: 768px) {
     .member {
         display: flex;
-        flex-direction: row;  /* 横並びを強制 */
-        align-items: flex-start;
+        flex-direction: row;
         padding: 15px;
         gap: 15px;
-        text-align: left;
         background: #f9f9f9;
+        align-items: center;
     }
 
     .member img {
-        width: 100px;
-        min-width: 100px;
-        height: 100px;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
         object-fit: cover;
         margin: 0;
         border-radius: 50%;
-        flex-shrink: 0;  /* 画像の縮小を防ぐ */
+        flex-shrink: 0;
     }
 
     .member-text {
-        display: block;  /* ブロック要素として表示 */
         flex: 1;
-        width: calc(100% - 115px);
-        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: calc(100% - 95px);
     }
 
-    .member h3 {
-        display: block;
-        width: 100%;
-        font-size: 16px;
-        margin: 0 0 5px;
-        text-align: left;
-    }
-
-    .member p {
-        display: block;
-        width: 100%;
-        font-size: 13px;
-        line-height: 1.5;
-        margin: 3px 0;
-        text-align: left;
-        writing-mode: horizontal-tb;  /* 横書きを強制 */
-        text-orientation: mixed;
-    }
-
-    /* 名前の表示を強調 */
-    .member p:first-of-type {
+    .member-text h3 {
         font-size: 15px;
-        font-weight: bold;
-        margin-bottom: 8px;
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+    }
+
+    .member-text p {
+        font-size: 13px;
+        margin: 0;
+        padding: 0;
+        line-height: 1.4;
+        text-align: left;
     }
 }
 
@@ -853,25 +842,21 @@ textarea {
     }
 
     .member img {
-        width: 80px;
-        min-width: 80px;
-        height: 80px;
+        width: 70px;
+        min-width: 70px;
+        height: 70px;
     }
 
     .member-text {
-        width: calc(100% - 95px);
+        width: calc(100% - 85px);
     }
 
-    .member h3 {
-        font-size: 15px;
-    }
-
-    .member p {
-        font-size: 12px;
-    }
-
-    .member p:first-of-type {
+    .member-text h3 {
         font-size: 14px;
+    }
+
+    .member-text p {
+        font-size: 12px;
     }
 }
 
