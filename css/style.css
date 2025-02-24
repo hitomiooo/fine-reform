@@ -824,9 +824,10 @@ textarea {
     .member-text {
         flex: 1;
         min-width: 0;
+        width: calc(100% - 115px); /* 画像とギャップを考慮した幅 */
     }
 
-    .member h3 {
+    .member-text h3 {
         font-size: 16px;
         margin: 0 0 5px;
         color: #222;
@@ -834,22 +835,15 @@ textarea {
         word-wrap: break-word;
     }
 
-    .member p {
+    .member-text p {
         font-size: 13px;
         line-height: 1.5;
         margin: 3px 0;
         color: #444;
         white-space: normal;
         word-wrap: break-word;
+        display: block;
         width: 100%;
-    }
-
-    /* 名前の表示を強調 */
-    .member p:first-of-type {
-        font-size: 15px;
-        font-weight: bold;
-        color: #333;
-        margin-bottom: 8px;
     }
 }
 
@@ -866,7 +860,7 @@ textarea {
     }
 
     .member-text {
-        width: calc(100% - 95px);
+        width: calc(100% - 95px); /* より小さい画面用に幅を調整 */
     }
 
     .member h3 {
