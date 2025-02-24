@@ -792,22 +792,12 @@ textarea {
 
 /* スマートフォン用のスタイル */
 @media (max-width: 768px) {
-    .workmate h1 {
-        margin: 60px 0 20px;
-        font-size: 20px;
-    }
-
-    .member-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
-    }
-
     .member {
         display: flex;
+        flex-direction: row;  /* 横並びを強制 */
+        align-items: flex-start;
         padding: 15px;
         gap: 15px;
-        align-items: flex-start;
         text-align: left;
         background: #f9f9f9;
     }
@@ -819,31 +809,40 @@ textarea {
         object-fit: cover;
         margin: 0;
         border-radius: 50%;
+        flex-shrink: 0;  /* 画像の縮小を防ぐ */
     }
 
     .member-text {
+        display: block;  /* ブロック要素として表示 */
         flex: 1;
-        min-width: 0;
-        width: calc(100% - 115px); /* 画像とギャップを考慮した幅 */
+        width: calc(100% - 115px);
+        overflow: visible;
     }
 
-    .member-text h3 {
+    .member h3 {
+        display: block;
+        width: 100%;
         font-size: 16px;
         margin: 0 0 5px;
-        color: #222;
-        white-space: normal;
-        word-wrap: break-word;
+        text-align: left;
     }
 
-    .member-text p {
+    .member p {
+        display: block;
+        width: 100%;
         font-size: 13px;
         line-height: 1.5;
         margin: 3px 0;
-        color: #444;
-        white-space: normal;
-        word-wrap: break-word;
-        display: block;
-        width: 100%;
+        text-align: left;
+        writing-mode: horizontal-tb;  /* 横書きを強制 */
+        text-orientation: mixed;
+    }
+
+    /* 名前の表示を強調 */
+    .member p:first-of-type {
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 8px;
     }
 }
 
@@ -860,7 +859,7 @@ textarea {
     }
 
     .member-text {
-        width: calc(100% - 95px); /* より小さい画面用に幅を調整 */
+        width: calc(100% - 95px);
     }
 
     .member h3 {
@@ -869,7 +868,6 @@ textarea {
 
     .member p {
         font-size: 12px;
-        width: 100%;
     }
 
     .member p:first-of-type {
