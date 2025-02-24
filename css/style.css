@@ -966,3 +966,30 @@ textarea {
 .slide.active {
     display: block; /* activeクラスを持つスライドを表示する */
 }
+/* スマートフォン向けのテーブルスタイル */
+@media screen and (max-width: 767px) {
+    .company-table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+
+    .company-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .company-table th,
+    .company-table td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal; /* thとtdの文字列が折り返されるように修正 */
+    }
+
+    /* 奇数行の背景色を変更する */
+    .company-table tr:nth-child(odd) {
+        background-color: #f2f2f2;
+    }
+}
