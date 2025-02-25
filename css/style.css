@@ -899,12 +899,12 @@ textarea {
 /* スマートフォン用のスタイル */
 @media (max-width: 768px) {
     .slideshow-container {
-        margin-top: 70px;
-        height: 250px;
+        margin-top: 60px;
+        height: 280px;
     }
 
     .slide img {
-        height: 300px;
+        height: 280px;
         object-position: center top;
         padding-top: 0;
     }
