@@ -900,11 +900,11 @@ textarea {
 @media (max-width: 768px) {
     .slideshow-container {
         margin-top: 80px;
-        height: 300px;
+        height: 200px;
     }
 
     .slide img {
-        height: 300px;
+        height: 200px;
         object-position: center top;
         padding-top: 0;
     }
