@@ -966,159 +966,7 @@ textarea {
 .slide.active {
     display: block; /* activeクラスを持つスライドを表示する */
 }
-/* スマートフォン向けのテーブルスタイル */
-@media screen and (max-width: 767px) {
-    .company-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
 
-    .company-table table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .company-table th,
-    .company-table td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal; /* thとtdの文字列が折り返されるように修正 */
-    }
-
-    /* 奇数行の背景色を変更する */
-    .company-table tr:nth-child(odd) {
-        background-color: #f2f2f2;
-    }
-}
-/* スマートフォン向けのテーブルスタイル */
-@media screen and (max-width: 767px) {
-    .company-info-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
-    .company-info-table table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-
-    .company-info-table th,
-    .company-info-table td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal;
-        display: block; /* thとtdをブロック要素にする */
-        width: 100%; /* 幅を100%にする */
-        box-sizing: border-box; /* paddingとborderをwidthに含める */
-    }
-
-    .company-info-table th {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
-
-    /* 奇数行の背景色を変更する */
-    .company-info-table tr:nth-child(odd) {
-        background-color: #fff; /* 奇数行の背景色を白にする */
-    }
-
-    .company-info-table tr {
-        margin-bottom: 10px; /* 行の下に余白を追加 */
-        display: block; /* 行をブロック要素にする */
-        border: 1px solid #ddd; /* 行にボーダーを追加 */
-    }
-}
-/* スマートフォン向けのテーブルスタイル */
-@media screen and (max-width: 767px) {
-    .company-info-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
-
-    .company-info-table table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed; /* テーブルレイアウトを固定 */
-    }
-
-    .company-info-table th,
-    .company-info-table td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal;
-        display: block; /* thとtdをブロック要素にする */
-        width: 100%; /* 幅を100%にする */
-        box-sizing: border-box; /* paddingとborderをwidthに含める */
-    }
-
-    .company-info-table th {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
-
-    /* 奇数行の背景色を変更する */
-    .company-info-table tr:nth-child(odd) {
-        background-color: #fff; /* 奇数行の背景色を白にする */
-    }
-
-    .company-info-table tr {
-        margin-bottom: 10px; /* 行の下に余白を追加 */
-        display: block; /* 行をブロック要素にする */
-        border: 1px solid #ddd; /* 行にボーダーを追加 */
-    }
-}
-/* スマートフォン向けのテーブルスタイル */
-@media screen and (max-width: 767px) {
-    .company-info-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
-
-    .company-info-table table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed; /* テーブルレイアウトを固定 */
-    }
-
-    .company-info-table tr {
-        width: 100%;
-        display: table-row; /* デフォルトのテーブル行表示に戻す */
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        box-sizing: border-box;
-    }
-
-    .company-info-table th,
-    .company-info-table td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal;
-        box-sizing: border-box;
-        width: auto; /* 幅を自動調整 */
-        display: table-cell; /* デフォルトのテーブルセル表示に戻す */
-    }
-
-    .company-info-table th {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
-
-    /* 奇数行の背景色を変更する */
-    .company-info-table tr:nth-child(odd) {
-        background-color: #f2f2f2; /* 奇数行の背景色を元に戻す */
-    }
-}
 /* スマートフォン向けのテーブルスタイル */
 @media screen and (max-width: 767px) {
     .company-info-table {
@@ -1133,14 +981,24 @@ textarea {
         table-layout: fixed;
     }
 
-    .company-info-table th,
+    .company-info-table th {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 14px;
+        white-space: normal; /* 折り返しを許可 */
+        box-sizing: border-box;
+        width: 40%; /* 幅を調整 */
+    }
+
     .company-info-table td {
         padding: 8px;
         border: 1px solid #ddd;
         text-align: left;
         font-size: 14px;
-        white-space: nowrap; /* thとtdの文字列が折り返されないように修正 */
+        white-space: normal; /* 折り返しを禁止 */
         box-sizing: border-box;
+        width: 60%; /* 幅を調整 */
     }
 
     .company-info-table th {
