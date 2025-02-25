@@ -1006,3 +1006,17 @@ textarea {
         background-color: #f2f2f2;
     }
 }
+main {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 10px; /* ヘッダーとメインコンテンツの間隔を調整 */
+}
+
+#slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* 必要に応じて調整 */
+    overflow: hidden;
+    margin-bottom: 10px; /* スライドショーとメインコンテンツの間隔を調整 */
+}
