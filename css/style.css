@@ -16,8 +16,6 @@ body {
     line-height: 1.6;
     background-color: #00d1f6;
     color: #333333;
-    /* width: 100%; は通常不要。ブラウザが自動で100%幅を取る */
-    /* overflow-x: hidden; は意図しない横スクロールを防ぐが、コンテンツの見切れに注意 */
 }
 
 /* ヘッダーのスタイル */
@@ -28,9 +26,11 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    height: 70px; /* ヘッダーの高さを明示的に設定 */
-    display: flex; /* ナビゲーションを中央揃えするために追加 */
-    align-items: center; /* ナビゲーションを中央揃えするために追加 */
+    display: flex;
+    flex-direction: column; /* ナビゲーションやロゴなどを縦に並べる場合に備えて追加 */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; /* 必要に応じてパディングを追加 */
 }
 
 /* ナビゲーションのスタイル */
@@ -38,10 +38,9 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    width: 100%; /* ナビゲーションが親要素の幅を占めるように */
+    width: 100%;
 }
 
 nav ul {
@@ -77,15 +76,18 @@ nav ul li a:active {
 
 /* ナビゲーションのレスポンシブ対応 */
 @media (max-width: 768px) {
+    header {
+        padding: 10px; /* モバイルでのヘッダーパディング調整 */
+    }
     nav {
-        padding: 10px;
-        justify-content: space-around; /* 小さい画面で均等に配置 */
+        padding: 0; /* ヘッダーのパディングで調整 */
+        justify-content: space-around;
     }
 
     nav ul {
         gap: 15px;
-        flex-wrap: wrap; /* ナビゲーション項目を折り返す */
-        justify-content: center; /* 折り返した際に中央揃え */
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     nav ul li a {
@@ -95,31 +97,49 @@ nav ul li a:active {
 }
 
 @media (max-width: 480px) {
+    header {
+        padding: 8px; /* さらに小さい画面でのヘッダーパディング調整 */
+    }
     nav ul {
-        gap: 10px; /* さらに小さい画面でギャップを狭める */
+        gap: 10px;
     }
 
     nav ul li a {
         font-size: 12px;
-        padding: 3px 5px; /* パディングをさらに小さく */
+        padding: 3px 5px;
     }
 }
 
 /* メインコンテンツのスタイル */
 main {
     width: 100%;
-    max-width: 1200px; /* 全体的な最大幅を設定 */
+    max-width: 1200px;
     margin: 0 auto;
-    padding: calc(70px + 20px) 0 40px; /* ヘッダーの高さ+余白をpadding-topに追加 */
+    /* ヘッダーの高さ+余白をpadding-topに追加 */
+    padding-top: 90px; /* ヘッダーの高さが変動するため、少し余裕を持たせるか、JSで正確に計算 */
+    padding-bottom: 40px;
     flex: 1;
+}
+
+/* メインコンテンツのpadding-topをレスポンシブで調整 */
+@media (max-width: 768px) {
+    main {
+        padding-top: 120px; /* モバイルでのヘッダー高さが変動することを考慮して余裕を持たせる */
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding-top: 100px; /* さらに小さい画面でのヘッダー高さが変動することを考慮して余裕を持たせる */
+    }
 }
 
 /* ヒーローセクションのスタイル */
 .hero {
     position: relative;
-    width: 90%; /* max-widthだけでなく、幅も調整 */
+    width: 90%;
     max-width: 1200px;
-    margin: 30px auto; /* padding-topで調整済みなので、margin-topは調整 */
+    margin: 30px auto;
     overflow: hidden;
     height: 600px;
     background-color: white;
@@ -140,25 +160,28 @@ main {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 画像がはみ出さないようにカバー */
+    object-fit: cover;
     object-position: center;
 }
 
+/* スライドの初期状態 */
 .slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: none;
+    display: none; /* 最初はすべてのスライドを非表示にする */
     justify-content: center;
     align-items: center;
 }
 
+/* アクティブなスライド */
 .slide.active {
-    display: flex;
+    display: flex; /* activeクラスを持つスライドを表示する */
 }
 
+/* フェードアニメーション */
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
@@ -214,12 +237,12 @@ main {
 @media (max-width: 768px) {
     .hero {
         height: 400px;
-        margin: 20px auto; /* ヘッダーの高さ考慮済みなのでマージン調整 */
-        width: 90%; /* 幅を広めに調整 */
+        margin: 20px auto;
+        width: 90%;
     }
 
     .hero h1 {
-        font-size: 2.5rem; /* スマートフォンでのフォントサイズ調整 */
+        font-size: 2.5rem;
     }
 
     .plumber-illustration {
@@ -236,25 +259,39 @@ main {
     .hero {
         height: 300px;
         margin: 15px auto;
-        width: 95%; /* さらに小さい画面で幅を広げる */
+        width: 95%;
     }
 
     .hero h1 {
-        font-size: 1.8rem; /* さらに小さい画面でのフォントサイズ調整 */
+        font-size: 1.8rem;
     }
+}
+
+/* お知らせセクション */
+.news {
+    width: 90%;
+    max-width: 1200px;
+    margin: 30px auto;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news h2 {
+    margin-bottom: 20px;
 }
 
 .news ul {
     list-style: none;
-    margin-top: 1rem;
 }
 
 .news li {
-    padding: 0.5rem 0;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
 }
 
-section, 
+section,
 .company-info,
 .workmate,
 .recruit-content,
@@ -270,7 +307,7 @@ section,
 
 /* 会社情報テーブルのスタイル */
 .company-info-table {
-    width: 90%; /* レスポンシブで広めに */
+    width: 90%;
     margin: 40px auto;
     border-collapse: collapse;
     background-color: white;
@@ -307,7 +344,7 @@ section,
 /* 会社情報テーブルのレスポンシブ対応 */
 @media (max-width: 768px) {
     .company-info-table {
-        width: 100%; /* フル幅に */
+        width: 100%;
         margin: 20px auto;
     }
 
@@ -331,7 +368,7 @@ section,
         text-align: left;
         width: 100%;
         padding: 10px 15px;
-        background-color: #e9ecef; /* ヘッダーの背景色を少し変更 */
+        background-color: #e9ecef;
         border-bottom: 1px solid #ddd;
     }
 
@@ -339,7 +376,7 @@ section,
         text-align: left;
         width: 100%;
         padding: 10px 15px;
-        border-bottom: none; /* tdの下線を削除 */
+        border-bottom: none;
     }
 
     .company-info-table td:last-child {
@@ -449,7 +486,7 @@ footer {
     .ceo-image {
         flex: none;
         width: 100%;
-        max-width: 200px; /* スマートフォンで画像を小さく */
+        max-width: 200px;
         margin: 0 auto;
     }
 }
@@ -593,7 +630,7 @@ footer {
 
 /* フッターナビゲーションのスタイル */
 .footer-nav {
-    width: 100%; /* フッターナビゲーションの幅を調整 */
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0;
@@ -605,11 +642,11 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     list-style: none;
-    padding: 20px; /* パディングを追加して見やすく */
+    padding: 20px;
 }
 
 .footer-nav a {
-    color: white; /* フッターの文字色に合わせる */
+    color: white;
     text-decoration: none;
 }
 
@@ -708,10 +745,10 @@ footer {
 
 @media screen and (max-width: 480px) {
     .radio-group {
-        flex-direction: column; /* スマートフォンで縦並びにする */
-        gap: 0.5rem; /* ギャップを調整 */
+        flex-direction: column;
+        gap: 0.5rem;
     }
-    
+
     .radio-label {
         margin: 0;
     }
@@ -854,8 +891,8 @@ textarea {
 /* スマートフォン用のメンバー表示スタイル */
 @media (max-width: 768px) {
     .member-container {
-        grid-template-columns: 1fr; /* スマートフォンでは1列表示 */
-        gap: 20px; /* ギャップを調整 */
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .member {
@@ -865,7 +902,7 @@ textarea {
         gap: 15px;
         background: #f9f9f9;
         align-items: center;
-        text-align: left; /* テキストを左寄せに */
+        text-align: left;
     }
 
     .member img {
@@ -883,18 +920,17 @@ textarea {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        /* width: calc(100% - 95px); はflex: 1; で不要 */
     }
 
     .member-text h3 {
-        font-size: 16px; /* スマートフォンでのフォントサイズ調整 */
+        font-size: 16px;
         margin: 0;
         padding: 0;
         line-height: 1.4;
     }
 
     .member-text p {
-        font-size: 14px; /* スマートフォンでのフォントサイズ調整 */
+        font-size: 14px;
         margin: 0;
         padding: 0;
         line-height: 1.4;
@@ -941,23 +977,11 @@ textarea {
     position: relative;
 }
 
-.slide {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-}
-
-.slide.active {
-    display: block;
-}
-
 .slide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* ここを修正: 上端を基準に表示するように変更 */
-    object-position: top center; /* または 'top' のみでも可 */
+    object-position: top center;
 }
 
 /* スマートフォン用のスライドショースタイル */
@@ -970,68 +994,6 @@ textarea {
     .slide img {
         height: 100%;
         object-fit: cover;
-        /* スマートフォンでも同様に上端を基準にするか、centerのままにするか検討 */
-        object-position: top center; /* こちらも 'top center' に変更 */
+        object-position: top center;
     }
-}
-/* お知らせセクション */
-.news {
-    width: 90%;
-    max-width: 1200px;
-    margin: 30px auto; /* 上下のマージンを統一 */
-    background-color: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.news h2 {
-    margin-bottom: 20px;
-}
-
-.news ul {
-    list-style: none;
-}
-
-.news li {
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-}
-
-/* 採用情報のレスポンシブ対応 */
-@media (max-width: 768px) {
-    .recruit-container {
-        width: 95%; /* 広い幅に調整 */
-    }
-
-    .recruit-tabs {
-        padding: 15px;
-        flex-direction: column; /* ボタンを縦並びに */
-        gap: 5px; /* ギャップを小さく */
-    }
-
-    .recruit-tabs button {
-        font-size: 14px;
-        padding: 8px 15px;
-        width: 100%; /* ボタンをフル幅に */
-    }
-
-    .tab-content {
-        padding: 15px;
-    }
-
-    .tab-content img {
-        width: 100%;
-        margin: 15px 0;
-    }
-}
-
-/* スライドの初期状態 */
-.slide {
-    display: none; /* 最初はすべてのスライドを非表示にする */
-}
-
-/* アクティブなスライド */
-.slide.active {
-    display: block; /* activeクラスを持つスライドを表示する */
 }
