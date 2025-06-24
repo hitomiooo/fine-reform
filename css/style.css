@@ -928,7 +928,7 @@ textarea {
     width: 90%;
     max-width: 1200px;
     height: 500px;
-    margin: 30px auto; /* ヘッダーの高さ考慮済みなのでマージン調整 */
+    margin: 30px auto;
     position: relative;
     background-color: #ffffff;
     border-radius: 10px;
@@ -954,24 +954,26 @@ textarea {
 
 .slide img {
     width: 100%;
-    height: 100%; /* 親要素の高さに合わせる */
-    object-fit: cover; /* カバーで画像を表示 */
-    object-position: center;
+    height: 100%;
+    object-fit: cover;
+    /* ここを修正: 上端を基準に表示するように変更 */
+    object-position: top center; /* または 'top' のみでも可 */
 }
 
 /* スマートフォン用のスライドショースタイル */
 @media (max-width: 768px) {
     .slideshow-container {
-        height: 300px; /* スマートフォンで高さを調整 */
+        height: 300px;
         margin: 20px auto;
     }
 
     .slide img {
-        height: 100%; /* 親要素の高さに合わせる */
-        object-fit: cover; /* スマートフォンでもカバー表示 */
+        height: 100%;
+        object-fit: cover;
+        /* スマートフォンでも同様に上端を基準にするか、centerのままにするか検討 */
+        object-position: top center; /* こちらも 'top center' に変更 */
     }
 }
-
 /* お知らせセクション */
 .news {
     width: 90%;
