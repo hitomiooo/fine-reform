@@ -1,9 +1,11 @@
+/* ユニバーサルリセット */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* ボディの基本スタイル */
 body {
     margin: 0;
     padding: 0;
@@ -14,10 +16,11 @@ body {
     line-height: 1.6;
     background-color: #00d1f6;
     color: #333333;
-    width: 100%;
-    overflow-x: hidden;
+    /* width: 100%; は通常不要。ブラウザが自動で100%幅を取る */
+    /* overflow-x: hidden; は意図しない横スクロールを防ぐが、コンテンツの見切れに注意 */
 }
 
+/* ヘッダーのスタイル */
 header {
     background-color: white;
     position: fixed;
@@ -25,8 +28,12 @@ header {
     top: 0;
     z-index: 1000;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 70px; /* ヘッダーの高さを明示的に設定 */
+    display: flex; /* ナビゲーションを中央揃えするために追加 */
+    align-items: center; /* ナビゲーションを中央揃えするために追加 */
 }
 
+/* ナビゲーションのスタイル */
 nav {
     display: flex;
     justify-content: center;
@@ -34,6 +41,7 @@ nav {
     padding: 10px 20px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%; /* ナビゲーションが親要素の幅を占めるように */
 }
 
 nav ul {
@@ -67,13 +75,17 @@ nav ul li a:active {
     transform: none;
 }
 
+/* ナビゲーションのレスポンシブ対応 */
 @media (max-width: 768px) {
     nav {
         padding: 10px;
+        justify-content: space-around; /* 小さい画面で均等に配置 */
     }
 
     nav ul {
         gap: 15px;
+        flex-wrap: wrap; /* ナビゲーション項目を折り返す */
+        justify-content: center; /* 折り返した際に中央揃え */
     }
 
     nav ul li a {
@@ -83,23 +95,31 @@ nav ul li a:active {
 }
 
 @media (max-width: 480px) {
+    nav ul {
+        gap: 10px; /* さらに小さい画面でギャップを狭める */
+    }
+
     nav ul li a {
         font-size: 12px;
+        padding: 3px 5px; /* パディングをさらに小さく */
     }
 }
 
+/* メインコンテンツのスタイル */
 main {
     width: 100%;
+    max-width: 1200px; /* 全体的な最大幅を設定 */
     margin: 0 auto;
-    padding: 80px 0 40px;
+    padding: calc(70px + 20px) 0 40px; /* ヘッダーの高さ+余白をpadding-topに追加 */
     flex: 1;
 }
 
+/* ヒーローセクションのスタイル */
 .hero {
     position: relative;
-    width: 100%;
+    width: 90%; /* max-widthだけでなく、幅も調整 */
     max-width: 1200px;
-    margin: 80px auto 30px;
+    margin: 30px auto; /* padding-topで調整済みなので、margin-topは調整 */
     overflow: hidden;
     height: 600px;
     background-color: white;
@@ -120,7 +140,7 @@ main {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* 画像がはみ出さないようにカバー */
     object-position: center;
 }
 
@@ -131,7 +151,6 @@ main {
     width: 100%;
     height: 100%;
     display: none;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -191,15 +210,16 @@ main {
     color: #003399;
 }
 
+/* ヒーローセクションのレスポンシブ対応 */
 @media (max-width: 768px) {
     .hero {
         height: 400px;
-        margin: 120px auto 20px;
-        width: 85%;
+        margin: 20px auto; /* ヘッダーの高さ考慮済みなのでマージン調整 */
+        width: 90%; /* 幅を広めに調整 */
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.5rem; /* スマートフォンでのフォントサイズ調整 */
     }
 
     .plumber-illustration {
@@ -215,8 +235,12 @@ main {
 @media (max-width: 480px) {
     .hero {
         height: 300px;
-        margin: 140px auto 15px;
-        width: 80%;
+        margin: 15px auto;
+        width: 95%; /* さらに小さい画面で幅を広げる */
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; /* さらに小さい画面でのフォントサイズ調整 */
     }
 }
 
@@ -244,8 +268,9 @@ section,
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* 会社情報テーブルのスタイル */
 .company-info-table {
-    width: 80%;
+    width: 90%; /* レスポンシブで広めに */
     margin: 40px auto;
     border-collapse: collapse;
     background-color: white;
@@ -279,15 +304,46 @@ section,
     margin: 0 0 10px 0;
 }
 
+/* 会社情報テーブルのレスポンシブ対応 */
 @media (max-width: 768px) {
     .company-info-table {
-        width: 95%;
+        width: 100%; /* フル幅に */
         margin: 20px auto;
     }
 
+    /* スマートフォンではテーブルを縦並びにする */
+    .company-info-table thead,
+    .company-info-table tbody,
     .company-info-table th,
+    .company-info-table td,
+    .company-info-table tr {
+        display: block;
+    }
+
+    .company-info-table tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .company-info-table th {
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+        background-color: #e9ecef; /* ヘッダーの背景色を少し変更 */
+        border-bottom: 1px solid #ddd;
+    }
+
     .company-info-table td {
-        padding: 15px;
+        text-align: left;
+        width: 100%;
+        padding: 10px 15px;
+        border-bottom: none; /* tdの下線を削除 */
+    }
+
+    .company-info-table td:last-child {
+        border-bottom: none;
     }
 }
 
@@ -327,6 +383,7 @@ button:hover {
     background-color: #555;
 }
 
+/* フッターのスタイル */
 footer {
     width: 100%;
     background-color: #333;
@@ -377,6 +434,7 @@ footer {
     line-height: 1.8;
 }
 
+/* CEOメッセージのレスポンシブ対応 */
 @media (max-width: 768px) {
     .ceo-message {
         margin-bottom: 40px;
@@ -391,7 +449,7 @@ footer {
     .ceo-image {
         flex: none;
         width: 100%;
-        max-width: 300px;
+        max-width: 200px; /* スマートフォンで画像を小さく */
         margin: 0 auto;
     }
 }
@@ -533,8 +591,10 @@ footer {
     text-decoration: underline;
 }
 
+/* フッターナビゲーションのスタイル */
 .footer-nav {
-    width: 1200px;
+    width: 100%; /* フッターナビゲーションの幅を調整 */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0;
 }
@@ -545,10 +605,11 @@ footer {
     flex-wrap: wrap;
     gap: 2rem;
     list-style: none;
+    padding: 20px; /* パディングを追加して見やすく */
 }
 
 .footer-nav a {
-    color: #333;
+    color: white; /* フッターの文字色に合わせる */
     text-decoration: none;
 }
 
@@ -647,8 +708,8 @@ footer {
 
 @media screen and (max-width: 480px) {
     .radio-group {
-        flex-direction: row;
-        gap: 0.5rem 1rem;
+        flex-direction: column; /* スマートフォンで縦並びにする */
+        gap: 0.5rem; /* ギャップを調整 */
     }
     
     .radio-label {
@@ -790,8 +851,13 @@ textarea {
     color: #666;
 }
 
-/* スマートフォン用のスタイル */
+/* スマートフォン用のメンバー表示スタイル */
 @media (max-width: 768px) {
+    .member-container {
+        grid-template-columns: 1fr; /* スマートフォンでは1列表示 */
+        gap: 20px; /* ギャップを調整 */
+    }
+
     .member {
         display: flex;
         flex-direction: row;
@@ -799,6 +865,7 @@ textarea {
         gap: 15px;
         background: #f9f9f9;
         align-items: center;
+        text-align: left; /* テキストを左寄せに */
     }
 
     .member img {
@@ -816,18 +883,18 @@ textarea {
         display: flex;
         flex-direction: column;
         gap: 5px;
-        width: calc(100% - 95px);
+        /* width: calc(100% - 95px); はflex: 1; で不要 */
     }
 
     .member-text h3 {
-        font-size: 15px;
+        font-size: 16px; /* スマートフォンでのフォントサイズ調整 */
         margin: 0;
         padding: 0;
         line-height: 1.4;
     }
 
     .member-text p {
-        font-size: 13px;
+        font-size: 14px; /* スマートフォンでのフォントサイズ調整 */
         margin: 0;
         padding: 0;
         line-height: 1.4;
@@ -847,16 +914,12 @@ textarea {
         height: 70px;
     }
 
-    .member-text {
-        width: calc(100% - 85px);
-    }
-
     .member-text h3 {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .member-text p {
-        font-size: 12px;
+        font-size: 13px;
     }
 }
 
@@ -865,7 +928,7 @@ textarea {
     width: 90%;
     max-width: 1200px;
     height: 500px;
-    margin: 100px auto 30px;
+    margin: 30px auto; /* ヘッダーの高さ考慮済みなのでマージン調整 */
     position: relative;
     background-color: #ffffff;
     border-radius: 10px;
@@ -891,22 +954,21 @@ textarea {
 
 .slide img {
     width: 100%;
-    height: 500px;
-    object-fit: contain;
+    height: 100%; /* 親要素の高さに合わせる */
+    object-fit: cover; /* カバーで画像を表示 */
     object-position: center;
 }
 
-/* スマートフォン用のスタイル */
+/* スマートフォン用のスライドショースタイル */
 @media (max-width: 768px) {
     .slideshow-container {
-        margin-top: 50px;
-        height: 500px;
+        height: 300px; /* スマートフォンで高さを調整 */
+        margin: 20px auto;
     }
 
     .slide img {
-        height: 350px;
-        object-position: center top;
-        padding-top: 0;
+        height: 100%; /* 親要素の高さに合わせる */
+        object-fit: cover; /* スマートフォンでもカバー表示 */
     }
 }
 
@@ -914,7 +976,7 @@ textarea {
 .news {
     width: 90%;
     max-width: 1200px;
-    margin: 30px auto 0;
+    margin: 30px auto; /* 上下のマージンを統一 */
     background-color: white;
     border-radius: 10px;
     padding: 30px;
@@ -934,19 +996,22 @@ textarea {
     border-bottom: 1px solid #eee;
 }
 
-/* レスポンシブ対応 */
+/* 採用情報のレスポンシブ対応 */
 @media (max-width: 768px) {
     .recruit-container {
-        width: 90%;
+        width: 95%; /* 広い幅に調整 */
     }
 
     .recruit-tabs {
         padding: 15px;
+        flex-direction: column; /* ボタンを縦並びに */
+        gap: 5px; /* ギャップを小さく */
     }
 
     .recruit-tabs button {
         font-size: 14px;
         padding: 8px 15px;
+        width: 100%; /* ボタンをフル幅に */
     }
 
     .tab-content {
@@ -957,7 +1022,9 @@ textarea {
         width: 100%;
         margin: 15px 0;
     }
-}/* スライドの初期状態 */
+}
+
+/* スライドの初期状態 */
 .slide {
     display: none; /* 最初はすべてのスライドを非表示にする */
 }
@@ -965,58 +1032,4 @@ textarea {
 /* アクティブなスライド */
 .slide.active {
     display: block; /* activeクラスを持つスライドを表示する */
-}
-
-/* スマートフォン向けのテーブルスタイル */
-@media screen and (max-width: 767px) {
-    .company-info-table {
-        width: 100%;
-        overflow-x: auto;
-        display: block;
-    }
-
-    .company-info-table table {
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
-    }
-
-    .company-info-table th {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal; /* 折り返しを許可 */
-        box-sizing: border-box;
-        width: 40%; /* 幅を調整 */
-    }
-
-    .company-info-table td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: left;
-        font-size: 14px;
-        white-space: normal; /* 折り返しを禁止 */
-        box-sizing: border-box;
-        width: 60%; /* 幅を調整 */
-    }
-
-    .company-info-table th {
-        font-weight: bold;
-        background-color: #f2f2f2;
-    }
-}
-main {
-    padding: 20px;
-    margin: 0 auto;
-    max-width: 800px;
-    margin-top: 10px; /* ヘッダーとメインコンテンツの間隔を調整 */
-}
-
-#slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 400px; /* 必要に応じて調整 */
-    overflow: hidden;
-    margin-bottom: 10px; /* スライドショーとメインコンテンツの間隔を調整 */
 }
