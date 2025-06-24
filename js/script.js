@@ -1,50 +1,59 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // 最初のタブコンテンツを表示
-    document.querySelector('.tab-content').style.display = 'block';
-
-    // タブクリック時の処理
-    const tabLinks = document.querySelectorAll('.recruit-tabs a');
-    
-    tabLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // すべてのタブコンテンツを非表示
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            
-            // クリックされたタブに対応するコンテンツを表示
-            const targetId = this.getAttribute('href');
-            document.querySelector(targetId).style.display = 'block';
-            
-            // アクティブなタブのスタイルを変更
-            tabLinks.forEach(link => link.parentElement.classList.remove('active'));
-            this.parentElement.classList.add('active');
-        });
-    });
-});
-
 let slideIndex = 0;
-showSlides();
+
+const slides = document.querySelectorAll('.slide');
+
+
 
 function showSlides() {
-    const slides = document.getElementsByClassName("slide");
-    
-    // すべてのスライドを非表示
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-    
-    // 次のスライドへ
-    slideIndex++;
-    if (slideIndex > slides.length) {
-        slideIndex = 1;
-    }
-    
-    // 現在のスライドを表示
-    slides[slideIndex-1].style.display = "block";
-    
-    // 3秒後に次のスライドへ
-    setTimeout(showSlides, 3000);
-} 
+
+    // すべてのスライドから active クラスを削除
+
+    for (let i = 0; i < slides.length; i++) {
+
+        slides[i].classList.remove('active');
+
+    }
+
+
+
+    // 次のスライドのインデックスを計算
+
+    slideIndex++;
+
+    if (slideIndex >= slides.length) {
+
+        slideIndex = 0; // 最初のスライドに戻る
+
+    }
+
+
+
+    // 現在のスライドに active クラスを追加
+
+    slides[slideIndex].classList.add('active');
+
+
+
+    // 5秒後に次のスライドを表示
+
+    setTimeout(showSlides, 5000);
+
+}
+
+
+
+// DOMContentLoaded イベントで初期化
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // 最初のスライドを表示するために、初期状態で active クラスを付与
+
+    slides[0].classList.add('active');
+
+    
+
+    // スライドショーを開始
+
+    showSlides();
+
+});
