@@ -6,7 +6,102 @@
     <title>お問い合わせ - 株式会社FINE</title>
     <meta name="description" content="株式会社FINEは、名古屋市を中心に水回り工事、リフォーム、給排水設備工事を行っています。確かな技術と迅速な対応でお客様の快適な生活をサポートします。">
     <link rel="stylesheet" href="css/style.css">
-    </head>
+    <style>
+        .required {
+            color: red;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .contact-form-container { /* 新しいCSSクラスを追加 */
+            max-width: 800px; /* フォームの幅を調整 */
+            margin: 30px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .contact-form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: calc(100% - 22px); /* paddingとborderを考慮 */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* パディングとボーダーを幅に含める */
+        }
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .radio-group label {
+            display: inline-flex; /* ラジオボタンとテキストを横並びにする */
+            align-items: center;
+            margin-right: 20px; /* ラジオボタン間のスペース */
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+            width: auto; /* デフォルトの幅に戻す */
+        }
+        .form-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-button button {
+            padding: 12px 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button button:hover {
+            background-color: #0056b3;
+        }
+        /* 送信結果メッセージのスタイル */
+        #responseMessage {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* 初期状態では非表示 */
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
 <body>
     <header>
         <nav>
@@ -21,16 +116,14 @@
     </header>
 
     <main>
-        <section class="contact">
-            <h1>お問い合わせフォーム</h1>
+        <section class="contact contact-form-container"> <h1>お問い合わせフォーム</h1>
             <div class="contact-intro">
                 <p>水まわりに関するご相談など、お見積り、お問い合わせはお気軽にどうぞ。</p>
                 <p>以下のフォームより、必要事項を入力のうえ送信してください。</p>
                 <p class="required-notice">※は必須項目です</p>
             </div>
 
-            <form action="submit.php" method="POST" class="contact-form h-adr">
-                <span class="p-country-name" style="display:none;">Japan</span>
+            <form id="contactForm" class="contact-form h-adr"> <span class="p-country-name" style="display:none;">Japan</span>
                 <div class="form-group">
                     <label for="name">お名前<span class="required">※</span></label>
                     <input type="text" id="name" name="name" required>
@@ -55,53 +148,7 @@
                     <label for="prefecture">都道府県</label>
                     <select id="prefecture" name="prefecture">
                         <option value="">選択してください</option>
-                        <option value="北海道">北海道</option>
-                        <option value="青森県">青森県</option>
-                        <option value="岩手県">岩手県</option>
-                        <option value="宮城県">宮城県</option>
-                        <option value="秋田県">秋田県</option>
-                        <option value="山形県">山形県</option>
-                        <option value="福島県">福島県</option>
-                        <option value="茨城県">茨城県</option>
-                        <option value="栃木県">栃木県</option>
-                        <option value="群馬県">群馬県</option>
-                        <option value="埼玉県">埼玉県</option>
-                        <option value="千葉県">千葉県</option>
-                        <option value="東京都">東京都</option>
-                        <option value="神奈川県">神奈川県</option>
-                        <option value="新潟県">新潟県</option>
-                        <option value="富山県">富山県</option>
-                        <option value="石川県">石川県</option>
-                        <option value="福井県">福井県</option>
-                        <option value="山梨県">山梨県</option>
-                        <option value="長野県">長野県</option>
-                        <option value="岐阜県">岐阜県</option>
-                        <option value="静岡県">静岡県</option>
-                        <option value="愛知県">愛知県</option>
-                        <option value="三重県">三重県</option>
-                        <option value="滋賀県">滋賀県</option>
-                        <option value="京都府">京都府</option>
-                        <option value="大阪府">大阪府</option>
-                        <option value="兵庫県">兵庫県</option>
-                        <option value="奈良県">奈良県</option>
-                        <option value="和歌山県">和歌山県</option>
-                        <option value="鳥取県">鳥取県</option>
-                        <option value="島根県">島根県</option>
-                        <option value="岡山県">岡山県</option>
-                        <option value="広島県">広島県</option>
-                        <option value="山口県">山口県</option>
-                        <option value="徳島県">徳島県</option>
-                        <option value="香川県">香川県</option>
-                        <option value="愛媛県">愛媛県</option>
-                        <option value="高知県">高知県</option>
-                        <option value="福岡県">福岡県</option>
-                        <option value="佐賀県">佐賀県</option>
-                        <option value="長崎県">長崎県</option>
-                        <option value="熊本県">熊本県</option>
-                        <option value="大分県">大分県</option>
-                        <option value="宮崎県">宮崎県</option>
-                        <option value="鹿児島県">鹿児島県</option>
-                        <option value="沖縄県">沖縄県</option>
+                        <option value="北海道">北海道</option><option value="青森県">青森県</option><option value="岩手県">岩手県</option><option value="宮城県">宮城県</option><option value="秋田県">秋田県</option><option value="山形県">山形県</option><option value="福島県">福島県</option><option value="茨城県">茨城県</option><option value="栃木県">栃木県</option><option value="群馬県">群馬県</option><option value="埼玉県">埼玉県</option><option value="千葉県">千葉県</option><option value="東京都">東京都</option><option value="神奈川県">神奈川県</option><option value="新潟県">新潟県</option><option value="富山県">富山県</option><option value="石川県">石川県</option><option value="福井県">福井県</option><option value="山梨県">山梨県</option><option value="長野県">長野県</option><option value="岐阜県">岐阜県</option><option value="静岡県">静岡県</option><option value="愛知県">愛知県</option><option value="三重県">三重県</option><option value="滋賀県">滋賀県</option><option value="京都府">京都府</option><option value="大阪府">大阪府</option><option value="兵庫県">兵庫県</option><option value="奈良県">奈良県</option><option value="和歌山県">和歌山県</option><option value="鳥取県">鳥取県</option><option value="島根県">島根県</option><option value="岡山県">岡山県</option><option value="広島県">広島県</option><option value="山口県">山口県</option><option value="徳島県">徳島県</option><option value="香川県">香川県</option><option value="愛媛県">愛媛県</option><option value="高知県">高知県</option><option value="福岡県">福岡県</option><option value="佐賀県">佐賀県</option><option value="長崎県">長崎県</option><option value="熊本県">熊本県</option><option value="大分県">大分県</option><option value="宮崎県">宮崎県</option><option value="鹿児島県">鹿児島県</option><option value="沖縄県">沖縄県</option>
                     </select>
 
                     <label for="address">市区町村・番地</label>
@@ -117,20 +164,16 @@
                     <label>問合せ種別<span class="required">※</span></label>
                     <div class="radio-group">
                         <label class="radio-label">
-                            <input type="radio" name="inquiry_type" value="question" required>
-                            <span class="radio-text">ご質問</span>
+                            <input type="radio" name="inquiry_type" value="ご質問" required> <span class="radio-text">ご質問</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="inquiry_type" value="consultation">
-                            <span class="radio-text">ご相談</span>
+                            <input type="radio" name="inquiry_type" value="ご相談"> <span class="radio-text">ご相談</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="inquiry_type" value="request">
-                            <span class="radio-text">ご依頼</span>
+                            <input type="radio" name="inquiry_type" value="ご依頼"> <span class="radio-text">ご依頼</span>
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="inquiry_type" value="other">
-                            <span class="radio-text">その他</span>
+                            <input type="radio" name="inquiry_type" value="その他"> <span class="radio-text">その他</span>
                         </label>
                     </div>
                 </div>
@@ -144,6 +187,7 @@
                     <button type="submit">送信する</button>
                 </div>
             </form>
+            <div id="responseMessage"></div>
         </section>
     </main>
 
@@ -163,6 +207,7 @@
     </footer>
     <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
     <script>
+        // 郵便番号からの住所自動入力スクリプト（既存のもの）
         document.getElementById('postal').addEventListener('input', function(e) {
             let value = this.value;
             
@@ -178,7 +223,6 @@
                     .then(data => {
                         if (data.results) {
                             const result = data.results[0];
-                            // 都道府県のプルダウンも連動させる場合
                             const prefectureSelect = document.getElementById('prefecture');
                             if (prefectureSelect) {
                                 for (let i = 0; i < prefectureSelect.options.length; i++) {
@@ -188,20 +232,374 @@
                                     }
                                 }
                             }
-                            // 市区町村・番地を入力
                             document.getElementById('address').value = `${result.address2}${result.address3}`;
                         } else {
-                            // 検索結果がない場合
                             console.log('住所が見つかりませんでした。');
-                            document.getElementById('address').value = ''; // 住所欄をクリア
+                            document.getElementById('address').value = '';
                         }
                     })
                     .catch(error => {
                         console.error('郵便番号検索エラー:', error);
-                        document.getElementById('address').value = ''; // エラー時も住所欄をクリア
+                        document.getElementById('address').value = '';
                     });
             }
         });
+
+        // --- ここからGAS連携のためのJavaScriptコード ---
+        const form = document.getElementById('contactForm');
+        const responseMessage = document.getElementById('responseMessage');
+        // ★★★ ここにあなたのデプロイしたGASのURLを貼り付けてください！ ★★★
+        const SCRIPT_URL = 'あなたのデプロイしたGASのURL'; 
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // フォームのデフォルト送信をキャンセル
+
+            // メールアドレスの確認
+            const emailInput = document.getElementById('email');
+            const emailConfirmInput = document.getElementById('email_confirm');
+            if (emailInput.value !== emailConfirmInput.value) {
+                responseMessage.textContent = 'メールアドレスが一致しません。再度確認してください。';
+                responseMessage.className = 'error';
+                responseMessage.style.display = 'block';
+                return; // フォーム送信を中止
+            }
+
+            const formData = new FormData(form);
+            const queryParams = new URLSearchParams(formData).toString();
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: queryParams,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                const result = await response.text();
+
+                if (response.ok && result.includes("Success")) {
+                    responseMessage.textContent = 'お問い合わせありがとうございます。送信が完了しました。';
+                    responseMessage.className = 'success';
+                    responseMessage.style.display = 'block';
+                    form.reset(); // フォームをリセット
+                    // メールアドレス確認フィールドもリセット
+                    emailConfirmInput.value = '';
+                } else {
+                    responseMessage.textContent = '送信中にエラーが発生しました。時間をおいて再度お試しください。' + (result ? ` エラー詳細: ${result}` : '');
+                    responseMessage.className = 'error';
+                    responseMessage.style.display = 'block';
+                }
+            } catch (error) {
+                responseMessage.textContent = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
+                responseMessage.className = 'error';
+                responseMessage.style.display = 'block';
+                console.error('Fetch error:', error);
+            }
+        });
+        // --- ここまでGAS連携のためのJavaScriptコード ---
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - 株式会社FINE</title>
+    <meta name="description" content="株式会社FINEは、名古屋市を中心に水回り工事、リフォーム、給排水設備工事を行っています。確かな技術と迅速な対応でお客様の快適な生活をサポートします。">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .required {
+            color: red;
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+        .contact-form-container { /* 新しいCSSクラスを追加 */
+            max-width: 800px; /* フォームの幅を調整 */
+            margin: 30px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #fff;
+        }
+        .contact-form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: calc(100% - 22px); /* paddingとborderを考慮 */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* パディングとボーダーを幅に含める */
+        }
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .radio-group label {
+            display: inline-flex; /* ラジオボタンとテキストを横並びにする */
+            align-items: center;
+            margin-right: 20px; /* ラジオボタン間のスペース */
+        }
+        .radio-group input[type="radio"] {
+            margin-right: 5px;
+            width: auto; /* デフォルトの幅に戻す */
+        }
+        .form-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .form-button button {
+            padding: 12px 40px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .form-button button:hover {
+            background-color: #0056b3;
+        }
+        /* 送信結果メッセージのスタイル */
+        #responseMessage {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* 初期状態では非表示 */
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="company.html">COMPANY</a></li>
+                <li><a href="workmate.html">WORKMATE</a></li>
+                <li><a href="recruit.html">RECRUIT</a></li>
+                <li><a href="mail.html">MAIL</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact contact-form-container"> <h1>お問い合わせフォーム</h1>
+            <div class="contact-intro">
+                <p>水まわりに関するご相談など、お見積り、お問い合わせはお気軽にどうぞ。</p>
+                <p>以下のフォームより、必要事項を入力のうえ送信してください。</p>
+                <p class="required-notice">※は必須項目です</p>
+            </div>
+
+            <form id="contactForm" class="contact-form h-adr"> <span class="p-country-name" style="display:none;">Japan</span>
+                <div class="form-group">
+                    <label for="name">お名前<span class="required">※</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">メールアドレス<span class="required">※</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email_confirm">メールアドレス（再度入力）<span class="required">※</span></label>
+                    <input type="email" id="email_confirm" name="email_confirm" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="postal">郵便番号（半角数字）</label>
+                    <input type="text" id="postal" name="postal" maxlength="8" placeholder="例）123-4567">
+                </div>
+
+                <div class="form-group address-group">
+                    <label for="prefecture">都道府県</label>
+                    <select id="prefecture" name="prefecture">
+                        <option value="">選択してください</option>
+                        <option value="北海道">北海道</option><option value="青森県">青森県</option><option value="岩手県">岩手県</option><option value="宮城県">宮城県</option><option value="秋田県">秋田県</option><option value="山形県">山形県</option><option value="福島県">福島県</option><option value="茨城県">茨城県</option><option value="栃木県">栃木県</option><option value="群馬県">群馬県</option><option value="埼玉県">埼玉県</option><option value="千葉県">千葉県</option><option value="東京都">東京都</option><option value="神奈川県">神奈川県</option><option value="新潟県">新潟県</option><option value="富山県">富山県</option><option value="石川県">石川県</option><option value="福井県">福井県</option><option value="山梨県">山梨県</option><option value="長野県">長野県</option><option value="岐阜県">岐阜県</option><option value="静岡県">静岡県</option><option value="愛知県">愛知県</option><option value="三重県">三重県</option><option value="滋賀県">滋賀県</option><option value="京都府">京都府</option><option value="大阪府">大阪府</option><option value="兵庫県">兵庫県</option><option value="奈良県">奈良県</option><option value="和歌山県">和歌山県</option><option value="鳥取県">鳥取県</option><option value="島根県">島根県</option><option value="岡山県">岡山県</option><option value="広島県">広島県</option><option value="山口県">山口県</option><option value="徳島県">徳島県</option><option value="香川県">香川県</option><option value="愛媛県">愛媛県</option><option value="高知県">高知県</option><option value="福岡県">福岡県</option><option value="佐賀県">佐賀県</option><option value="長崎県">長崎県</option><option value="熊本県">熊本県</option><option value="大分県">大分県</option><option value="宮崎県">宮崎県</option><option value="鹿児島県">鹿児島県</option><option value="沖縄県">沖縄県</option>
+                    </select>
+
+                    <label for="address">市区町村・番地</label>
+                    <input type="text" id="address" name="address" placeholder="例）港区津金2-11-28">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">お電話番号（半角数字）</label>
+                    <input type="tel" id="phone" name="phone" pattern="\d*">
+                </div>
+
+                <div class="form-group">
+                    <label>問合せ種別<span class="required">※</span></label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="inquiry_type" value="ご質問" required> <span class="radio-text">ご質問</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="inquiry_type" value="ご相談"> <span class="radio-text">ご相談</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="inquiry_type" value="ご依頼"> <span class="radio-text">ご依頼</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="inquiry_type" value="その他"> <span class="radio-text">その他</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">問合せ内容<span class="required">※</span></label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <div class="form-button">
+                    <button type="submit">送信する</button>
+                </div>
+            </form>
+            <div id="responseMessage"></div>
+        </section>
+    </main>
+
+    <footer>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="index.html">TOP</a></li>
+                <li><a href="company.html">COMPANY</a></li>
+                <li><a href="workmate.html">WORKMATE</a></li>
+                <li><a href="workflow.html">WORKFLOW</a></li>
+                <li><a href="recruit.html">RECRUIT</a></li>
+                <li><a href="mail.html">MAIL</a></li>
+                <li><a href="privacy.html">PRIVACY POLICY</a></li>
+            </ul>
+        </nav>
+        <p class="copyright">&copy; FINE All rights reserved.</p>
+    </footer>
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    <script>
+        // 郵便番号からの住所自動入力スクリプト（既存のもの）
+        document.getElementById('postal').addEventListener('input', function(e) {
+            let value = this.value;
+            
+            // ハイフンを自動追加
+            if (value.length === 3 && value.indexOf('-') === -1) {
+                this.value = value + '-';
+            }
+            
+            // 7桁の数字が入力されたら住所を検索
+            if (value.replace(/[^\d]/g, '').length === 7) {
+                fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${value.replace(/[^\d]/g, '')}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.results) {
+                            const result = data.results[0];
+                            const prefectureSelect = document.getElementById('prefecture');
+                            if (prefectureSelect) {
+                                for (let i = 0; i < prefectureSelect.options.length; i++) {
+                                    if (prefectureSelect.options[i].value === result.address1) {
+                                        prefectureSelect.selectedIndex = i;
+                                        break;
+                                    }
+                                }
+                            }
+                            document.getElementById('address').value = `${result.address2}${result.address3}`;
+                        } else {
+                            console.log('住所が見つかりませんでした。');
+                            document.getElementById('address').value = '';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('郵便番号検索エラー:', error);
+                        document.getElementById('address').value = '';
+                    });
+            }
+        });
+
+        // --- ここからGAS連携のためのJavaScriptコード ---
+        const form = document.getElementById('contactForm');
+        const responseMessage = document.getElementById('responseMessage');
+        // ★★★ ここにあなたのデプロイしたGASのURLを貼り付けてください！ ★★★
+        const SCRIPT_URL = 'あなたのデプロイしたGASのURL'; 
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // フォームのデフォルト送信をキャンセル
+
+            // メールアドレスの確認
+            const emailInput = document.getElementById('email');
+            const emailConfirmInput = document.getElementById('email_confirm');
+            if (emailInput.value !== emailConfirmInput.value) {
+                responseMessage.textContent = 'メールアドレスが一致しません。再度確認してください。';
+                responseMessage.className = 'error';
+                responseMessage.style.display = 'block';
+                return; // フォーム送信を中止
+            }
+
+            const formData = new FormData(form);
+            const queryParams = new URLSearchParams(formData).toString();
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: queryParams,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                });
+
+                const result = await response.text();
+
+                if (response.ok && result.includes("Success")) {
+                    responseMessage.textContent = 'お問い合わせありがとうございます。送信が完了しました。';
+                    responseMessage.className = 'success';
+                    responseMessage.style.display = 'block';
+                    form.reset(); // フォームをリセット
+                    // メールアドレス確認フィールドもリセット
+                    emailConfirmInput.value = '';
+                } else {
+                    responseMessage.textContent = '送信中にエラーが発生しました。時間をおいて再度お試しください。' + (result ? ` エラー詳細: ${result}` : '');
+                    responseMessage.className = 'error';
+                    responseMessage.style.display = 'block';
+                }
+            } catch (error) {
+                responseMessage.textContent = 'ネットワークエラーが発生しました。インターネット接続を確認してください。';
+                responseMessage.className = 'error';
+                responseMessage.style.display = 'block';
+                console.error('Fetch error:', error);
+            }
+        });
+        // --- ここまでGAS連携のためのJavaScriptコード ---
     </script>
 </body>
 </html>
