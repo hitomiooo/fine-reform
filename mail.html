@@ -35,10 +35,18 @@
         .contact-form-container iframe {
             width: 100%; /* 親要素の幅いっぱいに広げる */
             max-width: 760px; /* フォームの最大幅に合わせて調整（必要に応じて変更） */
-            height: 1202px; /* あなたが指定したGoogleフォームの高さ */
+            height: 1202px; /* デスクトップなど広い画面でのデフォルトの高さ */
             border: none; /* iframeのデフォルトのボーダーを削除 */
             display: block; /* 中央寄せのためにブロック要素にする */
             margin: 0 auto; /* 中央寄せ */
+        }
+
+        /* スマートフォンなど、画面幅が768px以下のデバイスに適用されるスタイル */
+        @media (max-width: 768px) {
+            .contact-form-container iframe {
+                height: auto; /* 高さを自動調整する */
+                min-height: 800px; /* 必要に応じて最小の高さを設定（フォーム全体が見える程度に調整） */
+            }
         }
     </style>
 </head>
